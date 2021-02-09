@@ -123,12 +123,12 @@ List<Settimana> settimane = (List<Settimana>) request.getAttribute("settimane");
 
         <div class="form-label">
           <label for="documentoIdentita">Documento di identità</label>
-          <input type="file" class="form-control-file" id="documentoIdentita">
+          <input type="file" class="form-control-file" id="documentoIdentita" required autofocus>
         </div>
 
         <div class="form-label">
           <label for="certificatoMedico">Certificato medico</label>
-          <input type="file" class="form-control-file" id="certificatoMedico">
+          <input type="file" class="form-control-file" id="certificatoMedico" required autofocus>
         </div>
 
       </div>
@@ -137,7 +137,7 @@ List<Settimana> settimane = (List<Settimana>) request.getAttribute("settimane");
         <h1 class="h5 mb-3 font-weight-normal">Informazioni ai fini dell'iscrizione</h1>
 
         <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" id="servizioSportivo">
+          <input class="form-check-input" type="checkbox" id="servizioSportivo" required autofocus>
           <label class="form-check-label" for="servizioSportivo">Servizio sportivo</label>
         </div>
 
