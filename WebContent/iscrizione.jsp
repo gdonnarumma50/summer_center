@@ -16,7 +16,6 @@ List<Settimana> settimane = (List<Settimana>) request.getAttribute("settimane");
     	    <h1 class="h3 mb-3 font-weight-normal">Iscrizione bambino</h1>
     	  
     	 <%
-		   	int i=1;
 		   	if(bambini!=null) {
 		   		%>
           <div class="form-label-group">
@@ -25,9 +24,8 @@ List<Settimana> settimane = (List<Settimana>) request.getAttribute("settimane");
               <%for(Bambino b: bambini) {
 	   				
 	   				%>
-              <option value="i"><%=b.getNome()+" "+b.getCognome()%></option>
-               <%i=i+1;
-               }%>
+              <option value="b.getCodiceFiscale()"><%=b.getNome()+" "+b.getCognome()%></option>
+               <%}%>
             </select>
       	  </div>
     	  
