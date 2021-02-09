@@ -1,7 +1,7 @@
 <%@ page language="java" import="java.util.*,model.entity.Utente" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-Utente utente = (Utente) request.getSession(false).getAttribute("utente");
-if(utente==null) {
+Utente utente1 = (Utente) request.getSession(false).getAttribute("utente");
+if(utente1==null) {
 	response.sendRedirect("./");
 }
 %>

@@ -1,3 +1,30 @@
+<%@ page language="java" import="java.util.*,model.entity.Utente" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+// Check user credentials
+Utente utente = (Utente) request.getSession(false).getAttribute("utente");
+String pagina = (String) request.getAttribute("page");
+
+boolean auth;
+
+if (utente == null)
+{	
+    auth = false;
+}
+else {
+	auth = true;
+}
+
+if( pagina != null ) {
+	if( (pagina.equalsIgnoreCase("login") ) && (auth) )
+	{
+		response.sendRedirect("./");
+	}
+}
+/*else {
+	response.sendRedirect("./index");
+}*/
+
+%>
 <!DOCTYPE html>
 <html>
 
@@ -36,7 +63,9 @@
             </div>
 
             <ul class="list-unstyled components">
-                <p>Nome utente</p>
+            <%if(utente!=null) {%>
+                <p><%= utente.getNome()+" "+utente.getCognome() %></p>
+            <%}%>
                 <li class="active">
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
                 </li>
@@ -56,7 +85,7 @@
 
                   <button type="button" id="sidebarCollapse" class="btn btn">
                       <i class="fas fa-align-left"></i>
-                      <span>Menù</span>
+                      <span>MenÃ¹</span>
                   </button>
                   <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                       <i class="fas fa-align-justify"></i>
