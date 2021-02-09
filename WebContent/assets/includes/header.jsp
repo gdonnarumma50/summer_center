@@ -17,7 +17,7 @@ else {
 if( pagina != null ) {
 	if( (pagina.equalsIgnoreCase("login") ) && (auth) )
 	{
-		response.sendRedirect("./");
+		response.sendRedirect("./index");
 	}
 }
 /*else {
@@ -70,7 +70,7 @@ if( pagina != null ) {
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
                 </li>
                 <li>
-                    <a href="demoIscrizione.html">Iscrizioni</a>
+                    <a href="${pageContext.request.contextPath}/iscrizione">Iscrizioni</a>
                 <li>
                     <a href="#">Contatti</a>
                 </li>
