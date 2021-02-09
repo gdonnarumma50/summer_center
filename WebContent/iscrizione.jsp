@@ -17,7 +17,6 @@ List<Settimana> settimane = (List<Settimana>) request.getAttribute("settimane");
     	  
     	 <%
 		   	int i=1;
-    	 	System.out.println(bambini);
 		   	if(bambini!=null) {
 		   		%>
           <div class="form-label-group">
