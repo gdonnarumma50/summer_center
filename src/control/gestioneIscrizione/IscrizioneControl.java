@@ -68,6 +68,8 @@ public class IscrizioneControl extends HttpServlet {
 		request.setAttribute("settimane", settimane);
 		*/
 		
+
+		//dispatch verso il form di inserimento
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/iscrizione.jsp");
 		dispatcher.forward(request, response);
 		
