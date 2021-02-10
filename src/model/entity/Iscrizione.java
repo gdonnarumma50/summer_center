@@ -112,9 +112,6 @@ public class Iscrizione implements Serializable {
 	}
 
 
-
-
-
 	public static final String FIND_ISCRIZIONE_BY_GENITORE = "Iscrizione.findIscrizioneByGenitore";
 
 
