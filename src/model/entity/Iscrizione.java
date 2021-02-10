@@ -1,5 +1,6 @@
 package model.entity;
 
+import static model.entity.Iscrizione.FIND_ISCRIZIONE_BY_GENITORE;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -11,6 +12,10 @@ import javax.persistence.*;
  *
  */
 @Entity
+@Table(name="iscrizione")
+@NamedQueries({
+	@NamedQuery(name=FIND_ISCRIZIONE_BY_GENITORE, query="SELECT i FROM Iscrizione i WHERE i.genitore.codiceFiscale=:cfGenitore")
+})
 public class Iscrizione implements Serializable {
 
 	
@@ -89,14 +94,28 @@ public class Iscrizione implements Serializable {
 		this.settimane = settimane;
 	}
 
+	public boolean isPagata() {
+		return pagata;
+	}
+
+	public void setPagata(boolean pagata) {
+		this.pagata = pagata;
+	}
+
 	@Override
 	public String toString() {
 		return "Iscrizione [idIscrizione=" + idIscrizione + ", dataIscrizione=" + dataIscrizione + ", qrCode=" + qrCode
 				+ ", prezzo=" + prezzo + ", richiestaDisdetta=" + richiestaDisdetta + ", rimborsoDisdetta="
 				+ rimborsoDisdetta + ", servizioSportivo=" + servizioSportivo + ", tipoSoggiorno=" + tipoSoggiorno
-				+ ", bambino=" + bambino + ", genitore=" + genitore + "]";
+				+ ", pagata=" + pagata + ", bambino=" + bambino + ", genitore=" + genitore + ", settimane=" + settimane
+				+ "]";
 	}
 
+
+
+
+
+	public static final String FIND_ISCRIZIONE_BY_GENITORE = "Iscrizione.findIscrizioneByGenitore";
 
 
 	@Id
@@ -108,6 +127,7 @@ public class Iscrizione implements Serializable {
 	private float rimborsoDisdetta;
 	private boolean servizioSportivo;
 	private String tipoSoggiorno;
+	private boolean pagata;
 	@ManyToOne
 	@JoinColumn(name = "cfBambino", referencedColumnName = "codiceFiscale")
 	private Bambino bambino;

@@ -1,0 +1,145 @@
+p.text-left.font-weight-bold {
+    margin-top: 15px;
+    margin-bottom: 1rem;
+    font-size: 30px;
+    color: #e51212;
+}
+
+.card-body{
+  background-color: #dee2e6;
+}
+
+.card-text{
+  color: green;
+  font-size: 24px;
+}
+
+.btn-outline-success {
+    color: #e51212;
+    border-color: #e51212;
+}
+
+.btn-outline-success:hover {
+    color: #fff;
+    background-color: #e51212;
+    border-color: #e51212;
+}
+
+.th{
+  color: #e51212;
+}
+
+.table .thead-dark th {
+    color: #fff;
+    background-color: #1e2965;
+    border-color: #1e2965;
+}
+
+.table td, .table th {
+    text-align: center;
+    padding: .75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+@media only screen and (min-width: 481px) and (max-width: 767px){
+
+table, thead, tbody, th, td, tr { 			/* Forza la tabella a non essere più una tabella */
+display: block;
+}
+
+thead tr { 						/* Nascondiamo l'intestazione della tabella thead */
+position: absolute;
+top: -9999px;
+left: -9999px;
+}
+
+th{
+  color: white;
+  background-color: #1e2965;
+}
+
+tr { border: 0px solid #666; }
+
+td {
+position: relative;		/* Creiamo lo spazio per l'intestazione  */
+padding-left: 50%;
+border:0;
+}
+
+td:before {
+position: absolute;			/* Creiamo le altre celle per la descrizione */
+top: 8px;
+left: 20px;
+width: 40%;
+font-weight:bold;
+}
+
+td:nth-of-type(1):before { content: "Id ordine"; }				/*  inseriamo l'etichetta per ciascuna cella con il selettore nth-of-type  */
+td:nth-of-type(2):before { content: "Data ordine"; }
+td:nth-of-type(3):before { content: "Stato dell'ordine"; }
+td:nth-of-type(4):before { content: "Numero prodotti"; }
+td:nth-of-type(5):before { content: "Prezzo"; }
+td:nth-of-type(6):before { content: "Mostra ordine"; }
+
+}
+
+@media only screen and (min-width: 300px) and (max-width: 480px){
+
+table, thead, tbody, th, td, tr { 			/* Forza la tabella a non essere più una tabella */
+display: block;
+}
+
+thead tr { 						/* Nascondiamo l'intestazione della tabella thead */
+position: absolute;
+top: -9999px;
+left: -9999px;
+}
+
+th{
+  color: white;
+  background-color: #1e2965;
+}
+
+tr {
+border: 0px solid #666;
+
+}
+
+td {
+position: relative;		/* Creiamo lo spazio per l'intestazione  */
+line-height:50px;
+border:0;
+}
+
+td:before {
+position: absolute;			/* Creiamo le altre celle per la descrizione */
+top: 0px;
+left: 0px;
+width: 100%;
+font-weight:bold;
+line-height:0px;
+top:10px;
+
+
+}
+
+td:nth-of-type(1):before { content: "Id ordine"; }				/*  inseriamo l'etichetta per ciascuna cella con il selettore nth-of-type  */
+td:nth-of-type(2):before { content: "Data ordine"; }
+td:nth-of-type(3):before { content: "Stato dell'ordine"; }
+td:nth-of-type(4):before { content: "Numero prodotti"; }
+td:nth-of-type(5):before { content: "Prezzo"; }
+td:nth-of-type(6):before { content: "Mostra ordine"; }
+
+}

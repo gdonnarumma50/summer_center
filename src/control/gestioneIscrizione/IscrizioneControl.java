@@ -15,8 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.dao.BambinoManage;
 import model.dao.BambinoManageDS;
-import model.dao.IscrioneManageDS;
 import model.dao.IscrizioneManage;
+import model.dao.IscrizioneManageDS;
 import model.entity.Bambino;
 import model.entity.Genitore;
 import model.entity.Iscrizione;
@@ -155,7 +155,7 @@ public class IscrizioneControl extends HttpServlet {
 			
 			float prezzo = this.calcolaPrezzo(listaSettimane.size(), tipoSoggiorno, disabilita, servizioSportivo);
 			
-			IscrizioneManage iscrizioneManage = new IscrioneManageDS();
+			IscrizioneManage iscrizioneManage = new IscrizioneManageDS();
 			Iscrizione iscrizione = new Iscrizione();
 			iscrizione.setPrezzo(prezzo);
 			iscrizione.setTipoSoggiorno(tipoSoggiorno);

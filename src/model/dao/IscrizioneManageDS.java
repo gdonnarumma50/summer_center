@@ -1,14 +1,17 @@
 package model.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 
 import listener.LocalEntityManagerFactory;
+import model.entity.Bambino;
 import model.entity.Iscrizione;
 
-public class IscrioneManageDS implements IscrizioneManage {
+public class IscrizioneManageDS implements IscrizioneManage {
 	
-	public IscrioneManageDS() {
+	public IscrizioneManageDS() {
 		try{
 			em = LocalEntityManagerFactory.getEntityManager();
 		} catch( RuntimeException ex){
@@ -30,5 +33,15 @@ public class IscrioneManageDS implements IscrizioneManage {
 	}
 	
 	private EntityManager em;
+
+	@Override
+	public List<Iscrizione> getIscrizioniByGenitore(String cfGenitore) {
+	try {
+		return em.createNamedQuery(Iscrizione.FIND_ISCRIZIONE_BY_GENITORE, Iscrizione.class)
+				.setParameter("cfGenitore", cfGenitore).getResultList();
+	} finally {
+		close();
+		}
+	}
 
 }
