@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.PersistenceException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -60,11 +61,16 @@ public class IscrizioneControl extends HttpServlet {
 		List<Bambino> bambini = bambinoManage.getBambini(u.getCodiceFiscale());
 		request.setAttribute("bambini", bambini);
 		
+		//L'ho disabilitato poichè nel db non ci sono settimane
+		/*
 		SettimanaManage settimanaManage = new SettimanaManageDS();
 		List<Settimana> settimane = settimanaManage.getSettimaneDisponibili();
 		request.setAttribute("settimane", settimane);
+		*/
 		
-		//TODO: dispatch verso il form di inserimento
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/iscrizione.jsp");
+		dispatcher.forward(request, response);
+		
 	}
 
 	/**
