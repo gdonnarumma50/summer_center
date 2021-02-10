@@ -69,8 +69,9 @@ public class IscrizioneControl extends HttpServlet {
 		*/
 		
 
-		//dispatch verso il form di inserimento
-		//prova a a a 
+		/**
+		 * Dispatch verso il form di inserimento
+		 */
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/iscrizione.jsp");
 		dispatcher.forward(request, response);
 		
