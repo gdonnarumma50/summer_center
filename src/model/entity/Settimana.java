@@ -4,6 +4,7 @@ import static model.entity.Settimana.FIND_BY_SETTIMANE_DISPONIBILI;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -12,6 +13,7 @@ import javax.persistence.*;
  *
  */
 @Entity
+@Table(name="settimana")
 @NamedQueries({
 	@NamedQuery(name=FIND_BY_SETTIMANE_DISPONIBILI, query="SELECT s FROM Settimana s WHERE s.disponibilita > 0")
 })
@@ -20,12 +22,27 @@ public class Settimana implements Serializable {
 	public Settimana() {
 	}
 	
-	public int getId() {
-		return id;
+	
+	public int getIdSettimana() {
+		return idSettimana;
 	}
-	public void setId(int id) {
-		this.id = id;
+
+
+	public void setIdSettimana(int idSettimana) {
+		this.idSettimana = idSettimana;
 	}
+
+
+	public List<Iscrizione> getIscrizioni() {
+		return iscrizioni;
+	}
+
+
+	public void setIscrizioni(List<Iscrizione> iscrizioni) {
+		this.iscrizioni = iscrizioni;
+	}
+
+
 	public Date getDataInizio() {
 		return dataInizio;
 	}
@@ -46,11 +63,7 @@ public class Settimana implements Serializable {
 	}
 	
 	
-	@Override
-	public String toString() {
-		return "Settimana [id=" + id + ", dataInizio=" + dataInizio + ", dataFine=" + dataFine + ", disponibilita="
-				+ disponibilita + "]";
-	}
+	
 
 
 	private static final long serialVersionUID = 1L;
@@ -58,9 +71,11 @@ public class Settimana implements Serializable {
 
 	@Id
 	@GeneratedValue
-	private int id;
+	private int idSettimana;
 	private Date dataInizio;
 	private Date dataFine;
 	private int disponibilita;
+	@ManyToMany(mappedBy="settimane")
+	private List<Iscrizione> iscrizioni;
    
 }

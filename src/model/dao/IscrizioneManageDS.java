@@ -6,7 +6,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 
 import listener.LocalEntityManagerFactory;
-import model.entity.Bambino;
 import model.entity.Iscrizione;
 
 public class IscrizioneManageDS implements IscrizioneManage {
@@ -31,17 +30,28 @@ public class IscrizioneManageDS implements IscrizioneManage {
 			em.getTransaction().commit();
 		}
 	}
-	
-	private EntityManager em;
 
 	@Override
 	public List<Iscrizione> getIscrizioniByGenitore(String cfGenitore) {
 	try {
 		return em.createNamedQuery(Iscrizione.FIND_ISCRIZIONE_BY_GENITORE, Iscrizione.class)
 				.setParameter("cfGenitore", cfGenitore).getResultList();
+	
 	} finally {
 		close();
 		}
 	}
+
+
+	@Override
+	public List<Iscrizione> getAll() {
+	try {
+		return em.createNamedQuery(Iscrizione.FIND_ALL, Iscrizione.class).getResultList();
+	} finally {
+			close();
+			}
+	}
+	
+	private EntityManager em;
 
 }

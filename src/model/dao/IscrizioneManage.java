@@ -8,4 +8,6 @@ public interface IscrizioneManage {
 	void save(Iscrizione i);
 	
 	List<Iscrizione> getIscrizioniByGenitore(String cfGenitore);
+	
+	List<Iscrizione> getAll();
 }

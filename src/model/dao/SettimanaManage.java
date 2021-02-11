@@ -8,5 +8,6 @@ public interface SettimanaManage {
 	 * @return Settimana, altrimenti null
 	 */
 	Settimana getSettimana(int id);
+	
 	List<Settimana> getSettimaneDisponibili();
 }

@@ -74,9 +74,17 @@ if( pagina != null ) {
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
                 </li>
                 <li>
-                    <a href="${pageContext.request.contextPath}/iscrizione">Iscrizioni</a>
-                <li>
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Iscrizione</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li>
+                            <a href="${pageContext.request.contextPath}/iscrizione">Effettua iscrizione</a>
+                        </li>
+                        <li>
+                            <a href="${pageContext.request.contextPath}/list_iscrizioni">Visualizza iscrizioni</a>
+                        </li>
+                    </ul>
                     <a href="#">Contatti</a>
+                </li>
                 </li>
             </ul>
         </nav>

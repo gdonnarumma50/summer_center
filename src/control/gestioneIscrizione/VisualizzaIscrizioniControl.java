@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.dao.BambinoManage;
 import model.dao.BambinoManageDS;
 import model.dao.IscrizioneManage;
+import model.dao.IscrizioneManageDS;
 import model.dao.SettimanaManage;
 import model.dao.SettimanaManageDS;
 import model.dao.UtenteManage;
@@ -40,8 +41,6 @@ public class VisualizzaIscrizioniControl extends HttpServlet {
      */
     public VisualizzaIscrizioniControl() {
         super();
-        this.iscrizioneManage=iscrizioneManage;
-        this.bambinoManage=bambinoManage;
         // TODO Auto-generated constructor stub
     }
 
@@ -60,14 +59,13 @@ public class VisualizzaIscrizioniControl extends HttpServlet {
 			return;
 		}
 		
-		Collection<Iscrizione> i = (Collection<Iscrizione>) iscrizioneManage.getIscrizioniByGenitore(u.getCodiceFiscale());
+		IscrizioneManage iscrizioneManage = new IscrizioneManageDS();
+		List<Iscrizione> iscrizioni = (List<Iscrizione>) iscrizioneManage.getIscrizioniByGenitore(u.getCodiceFiscale());
 		
-
-
-		request.setAttribute("iscrizioni", i);
 		
-
-
+		request.setAttribute("iscrizioni", iscrizioni);
+		
+		
 		/**
 		 * Dispatch verso la lista delle iscrizioni
 		 */
@@ -76,9 +74,5 @@ public class VisualizzaIscrizioniControl extends HttpServlet {
 		
 		
 	}
-
-	
-	private IscrizioneManage iscrizioneManage;
-	private BambinoManage bambinoManage;
 
 }

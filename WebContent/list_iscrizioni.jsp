@@ -1,12 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" import="java.util.*,model.entity.Iscrizione, model.entity.Bambino, control.gestioneIscrizione.VisualizzaIscrizioniControl"
+<%@ page language="java" contentType="text/html; charset=UTF-8" import="java.util.*,model.entity.Iscrizione, model.entity.Bambino, model.entity.Settimana, control.gestioneIscrizione.VisualizzaIscrizioniControl"
 	pageEncoding="UTF-8"%>
 
 <%
-	Collection<Iscrizione> list = (Collection<Iscrizione>) request.getAttribute("iscrizioni");
+	List<Iscrizione> iscrizioni = (List<Iscrizione>) request.getAttribute("iscrizioni");
+	
 %>
 
 <%@include file="./assets/includes/header.jsp" %>
-<link rel="stylesheet" href="assets/css/order_list.css">
+<link rel="stylesheet" href="./assets/css/order_list.css">
 
   </head>
 
@@ -16,14 +17,13 @@
 
       <p class="text-left font-weight-bold">Le mie iscrizioni</p>
 
-	<% if(list != null) { %>
+	<% if(iscrizioni != null) { %>
       <div class="row">
         <div class="col-lg-12">
           <div class="table-responsive-sm">
           <table class="table table-hover">
             <thead class="thead-dark">
               <tr>
-                <th scope="col">#</th>
                 <th scope="col">Codice iscrizione</th>
                 <th scope="col">Data iscrizione</th>
                 <th scope="col">Bambino</th>
@@ -37,16 +37,38 @@
             <tbody>
             <%
             int i=1;
-            for(Iscrizione isc: list) { %>
+            for(Iscrizione isc: iscrizioni) { %>
               <tr>
-                <th scope="row">Ordine numero <%= i %></th>
-                <td><%=isc.getIdIscrizione()%></td>
+                <th scope="row"><%= isc.getIdIscrizione() %></th>
                 <td><%=isc.getDataIscrizione()%></td>
-                <td><%=isc.getBambino()%></td>
-                <td><%=isc.getSettimane()%></td>
+                
+                <td>
+                	<%Bambino b = isc.getBambino();%>
+                	<%=b.getNome()+" "+b.getCognome()%>
+                </td>
+                <td>
+					<%List<Settimana> sett = isc.getSettimane();
+					for(Settimana s: sett){%>
+                	<%=s.getDataInizio()+" "+s.getDataFine()%><br>
+                	<%}%>
+				</td>
                 <td><%=isc.getPrezzo()%></td>
-                <td><%=isc.isPagata()%></td>
-                <td><%=isc.isRichiestaDisdetta()%></td>
+                
+                <td>
+                 <%if(isc.isPagata()){ %>
+                	Si
+                	<%} else {%>
+                	No
+                	<%}%>
+                </td>
+                
+                <td>
+                <%if(isc.isRichiestaDisdetta()){ %>
+                	Si
+                	<%} else {%>
+                	No
+                	<%}%>
+                </td>
                 <td>
                   <svg width="2em" height="3em" viewBox="0 0 16 16" class="bi bi-file-earmark-text" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path d="M4 1h5v1H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V6h1v7a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2z"/>
