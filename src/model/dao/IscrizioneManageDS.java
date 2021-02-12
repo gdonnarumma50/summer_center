@@ -52,6 +52,20 @@ public class IscrizioneManageDS implements IscrizioneManage {
 			}
 	}
 	
+	
+	@Override
+	public Iscrizione getIscrizione(int idIscrizione) {
+	try {
+		return em.createNamedQuery(Iscrizione.FIND_ISCRIZIONE, Iscrizione.class)
+				.setParameter("idIscrizione", idIscrizione).getSingleResult();
+	} finally {
+			close();
+	}
+	}
+	
+	
 	private EntityManager em;
+
+	
 
 }

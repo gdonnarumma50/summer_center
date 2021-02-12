@@ -61,12 +61,14 @@ public class IscrizioneControl extends HttpServlet {
 		List<Bambino> bambini = bambinoManage.getBambini(u.getCodiceFiscale());
 		request.setAttribute("bambini", bambini);
 		
-		//L'ho disabilitato poichè nel db non ci sono settimane
-		/*
 		SettimanaManage settimanaManage = new SettimanaManageDS();
 		List<Settimana> settimane = settimanaManage.getSettimaneDisponibili();
 		request.setAttribute("settimane", settimane);
-		*/
+		
+		for(Settimana s: settimane) {
+			System.out.println(s.getDataInizio().getMonth());
+			
+		}
 		
 
 		/**

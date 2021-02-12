@@ -2,6 +2,7 @@ package model.entity;
 
 import static model.entity.Iscrizione.FIND_ISCRIZIONE_BY_GENITORE;
 import static model.entity.Iscrizione.FIND_ALL;
+import static model.entity.Iscrizione.FIND_ISCRIZIONE;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -16,7 +17,8 @@ import javax.persistence.*;
 @Table(name="iscrizione")
 @NamedQueries({
 	@NamedQuery(name=FIND_ISCRIZIONE_BY_GENITORE, query="SELECT i FROM Iscrizione i WHERE i.genitore.codiceFiscale=:cfGenitore"),
-	@NamedQuery(name=FIND_ALL, query="SELECT i FROM Iscrizione i")
+	@NamedQuery(name=FIND_ALL, query="SELECT i FROM Iscrizione i"),
+	@NamedQuery(name=FIND_ISCRIZIONE, query="SELECT i FROM Iscrizione i WHERE i.idIscrizione=:idIscrizione")
 })
 public class Iscrizione implements Serializable {
 
@@ -116,6 +118,7 @@ public class Iscrizione implements Serializable {
 
 	public static final String FIND_ISCRIZIONE_BY_GENITORE = "Iscrizione.findIscrizioneByGenitore";
 	public static final String FIND_ALL = "Iscrizione.findAll";
+	public static final String FIND_ISCRIZIONE = "Iscrizione.findByKey";
 
 
 	@Id

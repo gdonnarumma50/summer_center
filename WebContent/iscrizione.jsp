@@ -159,7 +159,8 @@ List<Settimana> settimane = (List<Settimana>) request.getAttribute("settimane");
     	  </div>
 
         <h1 class="h5 mb-3 font-weight-normal">Seleziona periodo di soggiorno</h1>
-        <!--  Maggio -->
+        
+        <!--  Maggio 
         <div class="accordion" id="accordionExample">
         <div class="card">
           <div class="card-header" id="headingOne">
@@ -202,8 +203,109 @@ List<Settimana> settimane = (List<Settimana>) request.getAttribute("settimane");
           </div>
         </div>
       </div>
+      -->
+      
+        <div class="card-body">
+          <div class="accordion" id="accordionExample">
+			<%
+				int i=1;
+				if(settimane!=null) {
+				
+		   			for(Settimana s: settimane) {
+	   				
+	   		%>
+              <div class="card-header" id="Heading <%=i%>">
+                <h2 class="mb-0">
+                  <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#<%=i%>" aria-controls="<%=i%>">
+                    <%
+                    int mese = s.getDataInizio().getMonth();
+                    
+                    if(mese == 4){%>
+                    	Maggio
+                    <%}else if(mese == 5){%>
+                    	Giugno
+                    <%}else if(mese == 6){%>
+                    	Luglio
+                    <%}else if(mese == 7){%>
+                    	Agosto
+                    <%}else if(mese == 8){%>
+                    	Settembre
+                    <%}%>
+                  </button>
+                </h2>
+              </div>
 
-      </div>
+              <div id="<%=i%>" class="collapse" aria-labelledby="Heading <%=i%>" data-parent="#accordionExample">
+                <div class="card-body">
+                	<%
+                	int count = 1;
+                	
+                	
+                	if(mese==4){%>
+                	<div class="form-check">
+                		<input class="form-check-input" type="checkbox" value="" id="<%=count%>">
+                		<label class="form-check-label" for="<%=count%>">
+                  			Data inizio: <%=s.getDataInizio()%> 
+                  			<br>
+                  			Data fine: <%=s.getDataFine()%>
+                  			<br>
+                  			Posti disponibili: <%=s.getDisponibilita()%>
+                		</label>
+             		</div>
+                    	
+                    <%}else if(mese==5){%>
+                    <div class="form-check">
+                		<input class="form-check-input" type="checkbox" value="" id="<%=count%>">
+                		<label class="form-check-label" for="<%=count%>">
+                  			Data inizio: <%=s.getDataInizio()%> 
+                  			<br>
+                  			Data fine: <%=s.getDataFine()%>
+                  			<br>
+                  			Posti disponibili: <%=s.getDisponibilita()%>
+                		</label>
+             		</div>
+                    <%}else if(mese==6){%>
+                    <div class="form-check">
+                		<input class="form-check-input" type="checkbox" value="" id="<%=count%>">
+                		<label class="form-check-label" for="<%=count%>">
+                  			Data inizio: <%=s.getDataInizio()%> 
+                  			<br>
+                  			Data fine: <%=s.getDataFine()%>
+                  			<br>
+                  			Posti disponibili: <%=s.getDisponibilita()%>
+                		</label>
+             		</div>
+                    <%}else if(mese==7){%>
+                    <div class="form-check">
+                		<input class="form-check-input" type="checkbox" value="" id="<%=count%>">
+                		<label class="form-check-label" for="<%=count%>">
+                  			Data inizio: <%=s.getDataInizio()%> 
+                  			<br>
+                  			Data fine: <%=s.getDataFine()%>
+                  			<br>
+                  			Posti disponibili: <%=s.getDisponibilita()%>
+                		</label>
+             		</div>
+                    <%}else if(mese==8){%>
+                    <div class="form-check">
+                		<input class="form-check-input" type="checkbox" value="" id="<%=count%>">
+                		<label class="form-check-label" for="<%=count%>">
+                  			Data inizio: <%=s.getDataInizio()%> 
+                  			<br>
+                  			Data fine: <%=s.getDataFine()%>
+                  			<br>
+                  			Posti disponibili: <%=s.getDisponibilita()%>
+                		</label>
+             		</div>
+                    <%}%>
+                  </div>
+              </div>
+              <%
+              count=count+1;
+              i=i+1;}
+		   		}%>
+            </div>
+       </div>
 
       <div class="BUTTON">
     	  <button class="btn btn-lg btn-primary btn-block center" type="submit">Iscrivi bambino</button>
