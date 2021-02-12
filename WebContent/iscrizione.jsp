@@ -1,7 +1,12 @@
 <%@ page language="java" import="java.util.*,model.entity.Utente, model.entity.Bambino, model.entity.Settimana" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 List<Bambino> bambini = (List<Bambino>) request.getAttribute("bambini"); 
-List<Settimana> settimane = (List<Settimana>) request.getAttribute("settimane"); 
+
+List<Settimana> maggio = (List<Settimana>) request.getAttribute("maggio");
+List<Settimana> giugno = (List<Settimana>) request.getAttribute("giugno"); 
+List<Settimana> luglio = (List<Settimana>) request.getAttribute("luglio"); 
+List<Settimana> agosto = (List<Settimana>) request.getAttribute("agosto"); 
+List<Settimana> settembre = (List<Settimana>) request.getAttribute("settembre"); 
 
 %>
 <%@include file="./assets/includes/header.jsp" %>
@@ -163,45 +168,27 @@ List<Settimana> settimane = (List<Settimana>) request.getAttribute("settimane");
       
         <div class="card-body">
           <div class="accordion" id="accordionExample">
-			<%
-				int i=1;
-				if(settimane!=null) {
-				
-		   			for(Settimana s: settimane) {
-	   				
-	   		%>
-              <div class="card-header" id="Heading <%=i%>">
+          
+          <!-- Maggio -->
+          <%if(maggio.size()!=0) {	%>
+          <div class="card-header" id="HeadingMaggio">
                 <h2 class="mb-0">
-                  <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#<%=i%>" aria-controls="<%=i%>">
-                    <%
-                    int mese = s.getDataInizio().getMonth();
-                    
-                    if(mese == 4){%>
-                    	Maggio
-                    <%}else if(mese == 5){%>
-                    	Giugno
-                    <%}else if(mese == 6){%>
-                    	Luglio
-                    <%}else if(mese == 7){%>
-                    	Agosto
-                    <%}else if(mese == 8){%>
-                    	Settembre
-                    <%}%>
+                  <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#Maggio" aria-controls="Maggio">
+                    Maggio
                   </button>
                 </h2>
-              </div>
-
-			<!-- Il conteggio dei mesi parte da 0 -->
-              <div id="<%=i%>" class="collapse" aria-labelledby="Heading <%=i%>" data-parent="#accordionExample">
+          </div>
+          
+          <div id="Maggio" class="collapse" aria-labelledby="HeadingMaggio" data-parent="#accordionExample">
                 <div class="card-body">
                 	<%
-                	int count = 1;
+                	for(Settimana s: maggio) {
+                		
+                	%>
                 	
-                	
-                	if(mese==4){%>
                 	<div class="form-check">
-                		<input class="form-check-input" type="checkbox" value="" id="<%=count%>">
-                		<label class="form-check-label" for="<%=count%>">
+                		<input class="form-check-input" type="checkbox" value="" id="<%=s.getIdSettimana()%>">
+                		<label class="form-check-label" for="<%=s.getIdSettimana()%>">
                   			Data inizio: <%=s.getDataInizio()%> 
                   			<br>
                   			Data fine: <%=s.getDataFine()%>
@@ -209,11 +196,32 @@ List<Settimana> settimane = (List<Settimana>) request.getAttribute("settimane");
                   			Posti disponibili: <%=s.getDisponibilita()%>
                 		</label>
              		</div>
-                    	
-                    <%}else if(mese==5){%>
-                    <div class="form-check">
-                		<input class="form-check-input" type="checkbox" value="" id="<%=count%>">
-                		<label class="form-check-label" for="<%=count%>">
+             		 <%}%>
+             		</div>
+             		
+             	</div>
+             	<%}%>
+             	
+          <!-- Giugno -->
+          <%if(giugno.size()!=0) {	%>
+          <div class="card-header" id="HeadingGiugno">
+                <h2 class="mb-0">
+                  <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#Giugno" aria-controls="Giugno">
+                    Giugno
+                  </button>
+                </h2>
+          </div>
+          
+          <div id="Giugno" class="collapse" aria-labelledby="HeadingGiugno" data-parent="#accordionExample">
+                <div class="card-body">
+                	<%
+                	for(Settimana s: giugno) {
+                		
+                	%>
+                	
+                	<div class="form-check">
+                		<input class="form-check-input" type="checkbox" value="" id="<%=s.getIdSettimana()%>">
+                		<label class="form-check-label" for="<%=s.getIdSettimana()%>">
                   			Data inizio: <%=s.getDataInizio()%> 
                   			<br>
                   			Data fine: <%=s.getDataFine()%>
@@ -221,10 +229,32 @@ List<Settimana> settimane = (List<Settimana>) request.getAttribute("settimane");
                   			Posti disponibili: <%=s.getDisponibilita()%>
                 		</label>
              		</div>
-                    <%}else if(mese==6){%>
-                    <div class="form-check">
-                		<input class="form-check-input" type="checkbox" value="" id="<%=count%>">
-                		<label class="form-check-label" for="<%=count%>">
+             		 <%}%>
+             		</div>
+             		
+             	</div>
+             	<%}%>
+             	
+          <!-- Luglio -->
+          <%if(luglio.size()!=0) {	%>
+          <div class="card-header" id="HeadingLuglio">
+                <h2 class="mb-0">
+                  <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#Luglio" aria-controls="Luglio">
+                    Luglio
+                  </button>
+                </h2>
+          </div>
+          
+          <div id="Luglio" class="collapse" aria-labelledby="HeadingLuglio" data-parent="#accordionExample">
+                <div class="card-body">
+                	<%
+                	for(Settimana s: luglio) {
+                		
+                	%>
+                	
+                	<div class="form-check">
+                		<input class="form-check-input" type="checkbox" value="" id="<%=s.getIdSettimana()%>">
+                		<label class="form-check-label" for="<%=s.getIdSettimana()%>">
                   			Data inizio: <%=s.getDataInizio()%> 
                   			<br>
                   			Data fine: <%=s.getDataFine()%>
@@ -232,10 +262,32 @@ List<Settimana> settimane = (List<Settimana>) request.getAttribute("settimane");
                   			Posti disponibili: <%=s.getDisponibilita()%>
                 		</label>
              		</div>
-                    <%}else if(mese==7){%>
-                    <div class="form-check">
-                		<input class="form-check-input" type="checkbox" value="" id="<%=count%>">
-                		<label class="form-check-label" for="<%=count%>">
+             		 <%}%>
+             		</div>
+             		
+             	</div>
+             	<%}%>
+             	
+          <!-- Agosto -->
+          <%if(agosto.size()!=0) {	%>
+          <div class="card-header" id="HeadingAgosto">
+                <h2 class="mb-0">
+                  <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#Agosto" aria-controls="Agosto">
+                    Agosto
+                  </button>
+                </h2>
+          </div>
+          
+          <div id="Agosto" class="collapse" aria-labelledby="HeadingAgosto" data-parent="#accordionExample">
+                <div class="card-body">
+                	<%
+                	for(Settimana s: agosto) {
+                		
+                	%>
+                	
+                	<div class="form-check">
+                		<input class="form-check-input" type="checkbox" value="" id="<%=s.getIdSettimana()%>">
+                		<label class="form-check-label" for="<%=s.getIdSettimana()%>">
                   			Data inizio: <%=s.getDataInizio()%> 
                   			<br>
                   			Data fine: <%=s.getDataFine()%>
@@ -243,10 +295,32 @@ List<Settimana> settimane = (List<Settimana>) request.getAttribute("settimane");
                   			Posti disponibili: <%=s.getDisponibilita()%>
                 		</label>
              		</div>
-                    <%}else if(mese==8){%>
-                    <div class="form-check">
-                		<input class="form-check-input" type="checkbox" value="" id="<%=count%>">
-                		<label class="form-check-label" for="<%=count%>">
+             		 <%}%>
+             		</div>
+             		
+             	</div>
+             	<%}%>
+             	
+          <!-- Settembre -->
+          <%if(settembre.size()!=0) {	%>
+          <div class="card-header" id="HeadingSettembre">
+                <h2 class="mb-0">
+                  <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#Settembre" aria-controls="Settembre">
+                    Settembre
+                  </button>
+                </h2>
+          </div>
+          
+          <div id="Settembre" class="collapse" aria-labelledby="HeadingSettembre" data-parent="#accordionExample">
+                <div class="card-body">
+                	<%
+                	for(Settimana s: settembre) {
+                		
+                	%>
+                	
+                	<div class="form-check">
+                		<input class="form-check-input" type="checkbox" value="" id="<%=s.getIdSettimana()%>">
+                		<label class="form-check-label" for="<%=s.getIdSettimana()%>">
                   			Data inizio: <%=s.getDataInizio()%> 
                   			<br>
                   			Data fine: <%=s.getDataFine()%>
@@ -254,15 +328,18 @@ List<Settimana> settimane = (List<Settimana>) request.getAttribute("settimane");
                   			Posti disponibili: <%=s.getDisponibilita()%>
                 		</label>
              		</div>
-                    <%}%>
-                  </div>
-              </div>
-              <%
-              count=count+1;
-              i=i+1;}
-		   		}%>
+             		 <%}%>
+             		</div>
+             		
+             	</div>
+             	<%}%>
+             	
+             </div>
             </div>
-       </div>
+                    	
+                   
+          
+          	
 
       <div class="BUTTON">
     	  <button class="btn btn-lg btn-primary btn-block center" type="submit">Iscrivi bambino</button>

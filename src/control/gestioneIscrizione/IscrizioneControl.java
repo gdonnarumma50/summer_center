@@ -63,7 +63,39 @@ public class IscrizioneControl extends HttpServlet {
 		
 		SettimanaManage settimanaManage = new SettimanaManageDS();
 		List<Settimana> settimane = settimanaManage.getSettimaneDisponibili();
-		request.setAttribute("settimane", settimane);
+		
+		List<Settimana> maggio = new ArrayList<Settimana>();
+		List<Settimana> giugno = new ArrayList<Settimana>();
+		List<Settimana> luglio = new ArrayList<Settimana>();
+		List<Settimana> agosto = new ArrayList<Settimana>();
+		List<Settimana> settembre = new ArrayList<Settimana>();
+		
+		for(Settimana s: settimane) {
+			int mese = s.getDataInizio().getMonth();
+			
+			if(mese == 4) {
+				maggio.add(s);
+				
+			} else if(mese == 5) {
+				giugno.add(s);
+				
+			} else if(mese == 6) {
+				luglio.add(s);
+				
+			} else if(mese == 7) {
+				agosto.add(s);
+				
+			} else if(mese == 8) {
+				settembre.add(s);
+				
+			}
+		}
+		
+		request.setAttribute("maggio", maggio);
+		request.setAttribute("giugno", giugno);
+		request.setAttribute("luglio", luglio);
+		request.setAttribute("agosto", agosto);
+		request.setAttribute("settembre", settembre);
 		
 
 		/**
