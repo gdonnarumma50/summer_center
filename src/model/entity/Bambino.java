@@ -146,7 +146,7 @@ public class Bambino implements Serializable {
 			|| !b.getCodiceFiscale().matches("^[a-zA-Z]{6}[0-9]{2}[abcdehlmprstABCDEHLMPRST]{1}[0-9]{2}([a-zA-Z]{1}[0-9]{3})[a-zA-Z]{1}$")
 			|| (b.getEta()>=18)
 			|| b.getDataNascita().after(new Date())
-			|| !b.getLuogoNascita().matches("^[A-Za-z- ]+$")
+			|| !b.getLuogoNascita().matches("^[A-Za-z]{3}+$")
 			|| !b.getInfoEsigenzeAlimentari().matches("^[A-Za-z0-9]+$")
 			|| !b.getFarmaci().matches("^[A-Za-z0-9]+$")
 			|| !b.getInfoAllergie().matches("^[A-Za-z0-9]+$")) {
