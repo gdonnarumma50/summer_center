@@ -65,11 +65,6 @@ public class IscrizioneControl extends HttpServlet {
 		List<Settimana> settimane = settimanaManage.getSettimaneDisponibili();
 		request.setAttribute("settimane", settimane);
 		
-		for(Settimana s: settimane) {
-			System.out.println(s.getDataInizio().getMonth());
-			
-		}
-		
 
 		/**
 		 * Dispatch verso il form di inserimento

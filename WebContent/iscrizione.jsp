@@ -160,50 +160,6 @@ List<Settimana> settimane = (List<Settimana>) request.getAttribute("settimane");
 
         <h1 class="h5 mb-3 font-weight-normal">Seleziona periodo di soggiorno</h1>
         
-        <!--  Maggio 
-        <div class="accordion" id="accordionExample">
-        <div class="card">
-          <div class="card-header" id="headingOne">
-            <h2 class="mb-0">
-              <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne"  aria-controls="collapseOne">
-                Maggio
-              </button>
-            </h2>
-          </div>
-
-          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-            <div class="card-body">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                <label class="form-check-label" for="defaultCheck1">
-                  01/05/2021 - 06/05/2021 Posti disponibili: 70
-                </label>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-header" id="headingTwo">
-            <h2 class="mb-0">
-              <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-controls="collapseTwo">
-                Giugno
-              </button>
-            </h2>
-          </div>
-          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-            <div class="card-body">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                <label class="form-check-label" for="defaultCheck1">
-                  01/05/2021 - 06/05/2021 Posti disponibili: 70
-                </label>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      -->
       
         <div class="card-body">
           <div class="accordion" id="accordionExample">
@@ -235,6 +191,7 @@ List<Settimana> settimane = (List<Settimana>) request.getAttribute("settimane");
                 </h2>
               </div>
 
+			<!-- Il conteggio dei mesi parte da 0 -->
               <div id="<%=i%>" class="collapse" aria-labelledby="Heading <%=i%>" data-parent="#accordionExample">
                 <div class="card-body">
                 	<%
