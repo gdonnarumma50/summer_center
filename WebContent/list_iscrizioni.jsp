@@ -31,7 +31,7 @@
                 <th scope="col">Prezzo</th>
                 <th scope="col">Pagata</th>
                 <th scope="col">Disdetta</th>
-                <th scope="col">Mostra Ordine</th>
+                <th scope="col">Dettagli</th>
               </tr>
             </thead>
             <tbody>
