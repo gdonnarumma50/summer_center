@@ -70,7 +70,7 @@ public class Settimana implements Serializable {
 	public static final String FIND_BY_SETTIMANE_DISPONIBILI = "Settimana.findBySettimaneDisponibili";
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idSettimana;
 	private Date dataInizio;
 	private Date dataFine;

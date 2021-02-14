@@ -3,6 +3,7 @@ package control.gestioneIscrizione;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.persistence.PersistenceException;
@@ -110,25 +111,31 @@ public class IscrizioneControl extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String codiceFiscale = (String) request.getAttribute("codiceFiscale");
-		String nome = (String) request.getAttribute("nome");
-		String cognome = (String) request.getAttribute("cognome");
-		String dataNascita = (String) request.getAttribute("dataNascita");
-		String luogoNascita = (String) request.getAttribute("luogoNascita");
-		char genere = (char) request.getAttribute("genere");
-		boolean disabilita = (boolean) request.getAttribute("disabilita");
-		boolean esigenzeAlimentari = (boolean) request.getAttribute("esigenzeAlimentari");
-		boolean ausilioMaterialeGalleggiante = (boolean) request.getAttribute("ausilioMaterialeGalleggiante");
-		String infoEsigenzeAlimentari = (String) request.getAttribute("infoEsigenzeAlimentari");
-		String farmaci = (String) request.getAttribute("farmaci");
-		String infoAllergie = (String) request.getAttribute("infoAllergie");
-		String documentoIdentita = (String) request.getAttribute("documentoIdentita");
-		String certificatoMedico = (String) request.getAttribute("certificatoMedico");
-		boolean servizioSportivo = (boolean) request.getAttribute("servizioSportivo");
-		String tagliaIndumenti = (String) request.getAttribute("tagliaIndumenti");
-		String tipoSoggiorno = (String) request.getAttribute("tipoSoggiorno");
-		String periodoSoggiorno = (String) request.getAttribute("periodoSoggiorno");
-		Integer[] settimane = (Integer[]) request.getAttribute("settimane");
+		String codiceFiscale = (String) request.getParameter("codiceFiscale");
+		String nome = (String) request.getParameter("nome");
+		String cognome = (String) request.getParameter("cognome");
+		String dataNascita = (String) request.getParameter("dataNascita");
+		String luogoNascita = (String) request.getParameter("luogoNascita");
+		char genere = request.getParameter("genere").charAt(0);
+		boolean disabilita = Boolean.parseBoolean(request.getParameter("disabilita"));
+		boolean esigenzeAlimentari = Boolean.parseBoolean(request.getParameter("esigenzeAlimentari"));
+		boolean ausilioMaterialeGalleggiante = Boolean.parseBoolean(request.getParameter("ausilioMaterialeGalleggiante"));
+		String infoEsigenzeAlimentari = (String) request.getParameter("infoEsigenzeAlimentari");
+		String farmaci = (String) request.getParameter("farmaci");
+		String infoAllergie = (String) request.getParameter("infoAllergie");
+		String documentoIdentita = (String) request.getParameter("documentoIdentita");
+		String certificatoMedico = (String) request.getParameter("certificatoMedico");
+		boolean servizioSportivo = Boolean.parseBoolean(request.getParameter("servizioSportivo"));
+		String tagliaIndumenti = (String) request.getParameter("tagliaIndumenti");
+		String tipoSoggiorno = (String) request.getParameter("tipoSoggiorno");
+		String periodoSoggiorno = (String) request.getParameter("periodoSoggiorno");
+		String[] settimane = request.getParameterValues("settimane");
+		
+		String[] dataN = dataNascita.split("-", 3);
+		
+		for(String s:settimane) {
+			System.out.println(s);
+		}
 		
 		Genitore genitore = (Genitore) request.getSession(false).getAttribute("utente");
 		
@@ -151,15 +158,16 @@ public class IscrizioneControl extends HttpServlet {
 				bambino.setInfoEsigenzeAlimentari(infoEsigenzeAlimentari);
 				bambino.setFarmaci(farmaci);
 				bambino.setInfoAllergie(infoAllergie);
-				bambino.setDocumentoIdentita(documentoIdentita);
-				bambino.setCertificatoMedico(certificatoMedico);
+				bambino.setDocumentoIdentita("./");
+				bambino.setCertificatoMedico("./");
 				bambino.setTagliaIndumenti(tagliaIndumenti);
 				bambinoManage.update(bambino);
 			} else {
 				newBambino.setCodiceFiscale(codiceFiscale);
 				newBambino.setNome(nome);
 				newBambino.setCognome(cognome);
-				newBambino.setDataNascita(new Date(dataNascita));
+				//new Date(Integer.parseInt(dataN[0]), Integer.parseInt(dataN[1]), Integer.parseInt(dataN[2]))
+				newBambino.setDataNascita(java.sql.Date.valueOf(dataNascita));
 				newBambino.setLuogoNascita(luogoNascita);
 				newBambino.setGenere(genere);
 				newBambino.setDisabilita(disabilita);
@@ -168,8 +176,8 @@ public class IscrizioneControl extends HttpServlet {
 				newBambino.setInfoEsigenzeAlimentari(infoEsigenzeAlimentari);
 				newBambino.setFarmaci(farmaci);
 				newBambino.setInfoAllergie(infoAllergie);
-				newBambino.setDocumentoIdentita(documentoIdentita);
-				newBambino.setCertificatoMedico(certificatoMedico);
+				newBambino.setDocumentoIdentita("./");
+				newBambino.setCertificatoMedico("./");
 				newBambino.setTagliaIndumenti(tagliaIndumenti);
 				newBambino.setGenitore(genitore);
 				bambinoManage.save(newBambino);
@@ -178,8 +186,8 @@ public class IscrizioneControl extends HttpServlet {
 			//Compongo le settimane dati gli id dalla richiesta
 			SettimanaManage settimanaManage = new SettimanaManageDS();
 			List<Settimana> listaSettimane = new ArrayList<Settimana>();
-			for(Integer id:settimane) {
-				listaSettimane.add(settimanaManage.getSettimana(id));
+			for(String id:settimane) {
+				listaSettimane.add(settimanaManage.getSettimana(Integer.parseInt(id)));
 			}
 			
 			float prezzo = this.calcolaPrezzo(listaSettimane.size(), tipoSoggiorno, disabilita, servizioSportivo);
@@ -191,6 +199,7 @@ public class IscrizioneControl extends HttpServlet {
 			iscrizione.setRichiestaDisdetta(false);
 			iscrizione.setRimborsoDisdetta(0);
 			iscrizione.setDataIscrizione(new Date());
+			iscrizione.setServizioSportivo(servizioSportivo);
 			iscrizione.setQrCode("QRCODE");
 			if(bambino!=null) {
 				iscrizione.setBambino(bambino);
@@ -199,8 +208,11 @@ public class IscrizioneControl extends HttpServlet {
 			}
 			iscrizione.setGenitore(genitore);
 			iscrizione.setSettimane(listaSettimane);
-		} catch(PersistenceException e) {
 			
+			iscrizioneManage.save(iscrizione);
+		} catch(PersistenceException e) {
+			System.out.println(e);
+			e.printStackTrace();
 		}
 	}
 	

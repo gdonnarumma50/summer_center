@@ -14,22 +14,36 @@ List<Settimana> settembre = (List<Settimana>) request.getAttribute("settembre");
 
 <div class="container" style="position: relative">
 
-    	<form id="form_register" class="form-register" action="registrazione" method="post" data-toggle="validator" role="form">
+    	<form id="form_iscrizione" class="form-register" action="iscrizione" method="post" data-toggle="validator" role="form" novalidate>
 
     	  <div class="text-center mb-4">
     	    <img class="mb-4" src="assets/images/Logo_SummerCamp.png" alt="American Delights" width="250" height="200">
     	    <h1 class="h3 mb-3 font-weight-normal">Iscrizione bambino</h1>
     	  
+    	  <label for="nome">Seleziona un bambino pre-esistente</label>
     	 <%
 		   	if(bambini!=null) {
 		   		%>
           <div class="form-label-group">
-            <select class="form-control" aria-label="Default select example" required autofocus>
-              <option selected>Seleziona bambino pre-esistente</option>
+            <select id="bambini" class="form-control" aria-label="Default select example" onchange="onChangeBambino(this)" required autofocus>
+              <option value="" selected></option>
               <%for(Bambino b: bambini) {
 	   				
 	   				%>
-              <option value="b.getCodiceFiscale()"><%=b.getNome()+" "+b.getCognome()%></option>
+              <option 
+              data-nome="<%=b.getNome() %>" 
+              data-cogn="<%=b.getCognome() %>" 
+              data-nascita="<%=b.getDataNascita() %>" 
+              data-luogoNascita="<%=b.getLuogoNascita() %>" 
+              data-CF="<%=b.getCodiceFiscale() %>" 
+              data-genere="<%=b.getGenere() %>" 
+              data-disabilita="<%=b.isDisabilita() %>"
+              data-esigenze="<%=b.isEsigenzeAlimentari() %>"
+              data-infoEsigenze="<%=b.getInfoEsigenzeAlimentari() %>"
+              data-farmaci="<%=b.getFarmaci() %>"
+              data-allergie="<%=b.getInfoAllergie() %>"
+              data-taglia="<%=b.getTagliaIndumenti() %>"
+              data-materialeGal="<%=b.isAusilioMaterialeGalleggiante() %>"><%=b.getNome()+" "+b.getCognome()%></option>
                <%}%>
             </select>
       	  </div>
@@ -40,37 +54,38 @@ List<Settimana> settembre = (List<Settimana>) request.getAttribute("settembre");
       <div class="dati anagrafici">
         <h1 class="h5 mb-3 font-weight-normal">Dati anagrafici</h1>
 
-    	  <div class="form-label-group">
-    	    <input type="text" id="nome" name="nome" onkeyup="controlForm(this)" class="form-control" placeholder="Nome" required autofocus>
-    	    <label for="nome">Nome</label>
+    	  <div class="form-label">
+    	  	<label for="nome">Nome</label>
+    	    <input type="text" id="nome" name="nome" class="form-control" placeholder="Nome" required autofocus>
     	    <div id="invalidNome" class="invalid-tooltip"></div>
     	  </div>
 
-    	  <div class="form-label-group">
-    	    <input type="text" id="cognome" name="cognome" onkeyup="controlForm(this)" class="form-control" placeholder="Cognome" required autofocus>
-    	    <label for="cognome">Cognome</label>
+    	  <div class="form-label">
+    	  	<label for="cognome">Cognome</label>
+    	    <input type="text" id="cognome" name="cognome" class="form-control" placeholder="Cognome" required autofocus>
     	    <div id="invalidCognome" class="invalid-tooltip"></div>
     	  </div>
 
-    	  <div class="form-label-group">
-    	    <input type="date" id="dataNascita" name="dataNascita" onkeyup="controlForm(this)" class="form-control" max="2003-01-01" required autofocus>
-    	    <label for="dataNascita">Data di nascita</label>
+    	  <div class="form-label">
+    	  	<label for="dataNascita">Data di nascita</label>
+    	    <input type="date" id="dataNascita" name="dataNascita" onkeyup="controlForm(this)" class="form-control" min="2004-01-01" max="2021-01-01" required autofocus>
+    	    <div id="invalidDataNascita" class="invalid-tooltip"></div>
     	  </div>
 
-        <div class="form-label-group">
-    	    <input type="text" id="luogoNascita" name="luogoNascita" onkeyup="controlForm(this)" class="form-control" placeholder="Luogo di nascita" required autofocus>
-    	    <label for="luogoNascita">Luogo di nascita</label>
+        <div class="form-label">
+        	<label for="luogoNascita">Luogo di nascita</label>
+    	    <input type="text" id="luogoNascita" name="luogoNascita" class="form-control" placeholder="Luogo di nascita" required autofocus>
     	    <div id="invalidLuogoNascita" class="invalid-tooltip"></div>
     	  </div>
 
-        <div class="form-label-group">
-    	    <input type="text" id="codiceFiscale" name="codiceFiscale" onkeyup="controlForm(this)" class="form-control" placeholder="Codice Fiscale" required autofocus>
-    	    <label for="codiceFiscale">Codice Fiscale</label>
+        <div class="form-label">
+        	<label for="codiceFiscale">Codice Fiscale</label>
+    	    <input type="text" id="codiceFiscale" name="codiceFiscale" class="form-control" placeholder="Codice Fiscale" required autofocus>
     	    <div id="invalidCodiceFiscale" class="invalid-tooltip"></div>
     	  </div>
 
-        <div class="form-label-group">
-          <select class="form-control" aria-label="Default select example" required autofocus>
+        <div class="form-label">
+          <select id="genere" name="genere" class="form-control" aria-label="Default select example" required autofocus>
             <option selected>Genere</option>
             <option value="M">Maschio</option>
             <option value="F">Femmina</option>
@@ -83,39 +98,40 @@ List<Settimana> settembre = (List<Settimana>) request.getAttribute("settembre");
         <h1 class="h5 mb-3 font-weight-normal">Esigenze</h1>
 
           <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="esigenzeAlimentari">
+            <input id="esigenze" name="esigenzeAlimentari" class="form-check-input" type="checkbox" id="esigenzeAlimentari">
             <label class="form-check-label" for="esigenzeAlimentari">Esigenze alimentari</label>
           </div>
 
           <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="disabilita">
+            <input id="disabilita" name="disabilita" class="form-check-input" type="checkbox" id="disabilita">
             <label class="form-check-label" for="disabilita">Disabilità</label>
           </div>
 
           <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="ausilioMaterialeGalleggiante">
+            <input id="materialeGal" name="ausilioMaterialeGalleggiante" class="form-check-input" type="checkbox" id="ausilioMaterialeGalleggiante">
             <label class="form-check-label" for="ausilioMaterialeGalleggiante">Ausilio materiale galleggiante</label>
           </div>
 
 
-          <div class="form-label-group">
+          <div class="form-label">
             <div class="form-floating">
               <label for="infoEsigenzeAlimentari">Descrizione esigenze alimentari</label>
-              <textarea class="form-control"  id="infoEsigenzeAlimentari" style="height: 100px"></textarea>
+              <textarea id="infoEsigenze" name="infoEsigenzeAlimentari" class="form-control"  id="infoEsigenzeAlimentari" style="height: 100px"></textarea>
+              <div id="invalidInfoEsigenzeAlimentari" class="invalid-tooltip"></div>
       	  </div>
           </div>
 
-        <div class="form-label-group">
+        <div class="form-label">
           <div class="form-floating">
             <label for="farmaci">Farmaci</label>
-            <textarea class="form-control"  id="farmaci" style="height: 100px"></textarea>
+            <textarea id="farmaci" name="farmaci" class="form-control"  id="farmaci" style="height: 100px"></textarea>
     	  </div>
         </div>
 
-        <div class="form-label-group">
+        <div class="form-label">
           <div class="form-floating">
-          <label for="allergie">Allergie</label>
-          <textarea class="form-control"  id="allergie" style="height: 100px"></textarea>
+          <label id="allergie" for="allergie">Allergie</label>
+          <textarea name="infoAllergie" class="form-control"  id="allergie" style="height: 100px"></textarea>
     	  </div>
         </div>
 
@@ -140,26 +156,26 @@ List<Settimana> settembre = (List<Settimana>) request.getAttribute("settembre");
         <h1 class="h5 mb-3 font-weight-normal">Informazioni ai fini dell'iscrizione</h1>
 
         <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" id="servizioSportivo" required autofocus>
+          <input name="servizioSportivo" class="form-check-input" type="checkbox" id="servizioSportivo" required autofocus>
           <label class="form-check-label" for="servizioSportivo">Servizio sportivo</label>
         </div>
 
-        <div class="form-label-group">
-          <select class="form-control" aria-label="Default select example" required autofocus>
+        <div class="form-label">
+          <select id="taglia" name="tagliaIndumenti" class="form-control" aria-label="Default select example" required autofocus>
             <option selected>Taglia indumenti</option>
-            <option value="1">XS</option>
-            <option value="2">S</option>
-            <option value="3">M</option>
-            <option value="4">L</option>
-            <option value="5">XL</option>
+            <option value="XS">XS</option>
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
           </select>
     	  </div>
 
         <div class="form-label-group">
-          <select title="prova" class="form-control" aria-label="Default select example" required autofocus>
+          <select name="tipoSoggiorno" class="form-control" aria-label="Default select example" required autofocus>
             <option not selected>Tipo soggiorno</option>
-            <option value="1">Part-time</option>
-            <option value="2">Full-time</option>
+            <option value="Part-Time">Part-Time</option>
+            <option value="Full-Time">Full-Time</option>
           </select>
     	  </div>
 
@@ -187,7 +203,7 @@ List<Settimana> settembre = (List<Settimana>) request.getAttribute("settembre");
                 	%>
                 	
                 	<div class="form-check">
-                		<input class="form-check-input" type="checkbox" value="" id="<%=s.getIdSettimana()%>">
+                		<input name="settimane" value="<%=s.getIdSettimana()%>" class="form-check-input" type="checkbox" id="<%=s.getIdSettimana()%>">
                 		<label class="form-check-label" for="<%=s.getIdSettimana()%>">
                   			Data inizio: <%=s.getDataInizio()%> 
                   			<br>
@@ -220,7 +236,7 @@ List<Settimana> settembre = (List<Settimana>) request.getAttribute("settembre");
                 	%>
                 	
                 	<div class="form-check">
-                		<input class="form-check-input" type="checkbox" value="" id="<%=s.getIdSettimana()%>">
+                		<input name="settimane" value="<%=s.getIdSettimana()%>" class="form-check-input" type="checkbox" value="" id="<%=s.getIdSettimana()%>">
                 		<label class="form-check-label" for="<%=s.getIdSettimana()%>">
                   			Data inizio: <%=s.getDataInizio()%> 
                   			<br>
@@ -253,7 +269,7 @@ List<Settimana> settembre = (List<Settimana>) request.getAttribute("settembre");
                 	%>
                 	
                 	<div class="form-check">
-                		<input class="form-check-input" type="checkbox" value="" id="<%=s.getIdSettimana()%>">
+                		<input name="settimane" value="<%=s.getIdSettimana()%>" class="form-check-input" type="checkbox" value="" id="<%=s.getIdSettimana()%>">
                 		<label class="form-check-label" for="<%=s.getIdSettimana()%>">
                   			Data inizio: <%=s.getDataInizio()%> 
                   			<br>
@@ -286,7 +302,7 @@ List<Settimana> settembre = (List<Settimana>) request.getAttribute("settembre");
                 	%>
                 	
                 	<div class="form-check">
-                		<input class="form-check-input" type="checkbox" value="" id="<%=s.getIdSettimana()%>">
+                		<input name="settimane" value="<%=s.getIdSettimana()%>" class="form-check-input" type="checkbox" value="" id="<%=s.getIdSettimana()%>">
                 		<label class="form-check-label" for="<%=s.getIdSettimana()%>">
                   			Data inizio: <%=s.getDataInizio()%> 
                   			<br>
@@ -319,7 +335,7 @@ List<Settimana> settembre = (List<Settimana>) request.getAttribute("settembre");
                 	%>
                 	
                 	<div class="form-check">
-                		<input class="form-check-input" type="checkbox" value="" id="<%=s.getIdSettimana()%>">
+                		<input name="settimane" value="<%=s.getIdSettimana()%>" class="form-check-input" type="checkbox" value="" id="<%=s.getIdSettimana()%>">
                 		<label class="form-check-label" for="<%=s.getIdSettimana()%>">
                   			Data inizio: <%=s.getDataInizio()%> 
                   			<br>
@@ -336,7 +352,7 @@ List<Settimana> settembre = (List<Settimana>) request.getAttribute("settembre");
              	
              </div>
             </div>
-                    	
+</div>     	
                    
           
           	
@@ -350,4 +366,7 @@ List<Settimana> settembre = (List<Settimana>) request.getAttribute("settembre");
 
   </div>
   
-<%@include file="./assets/includes/footer.jsp" %>
+	<%@include file="./assets/includes/footer.jsp" %>
+	<script src="./assets/js/iscrizione.js"></script>
+	</body>
+</html>

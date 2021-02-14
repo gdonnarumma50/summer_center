@@ -27,6 +27,7 @@ public class BambinoManageDS implements BambinoManage {
 
 	@Override
 	public void save(Bambino b) throws PersistenceException {
+		
 		if(b!=null) {
 			em.getTransaction().begin();
 			em.persist(b);

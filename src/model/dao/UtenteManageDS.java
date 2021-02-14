@@ -30,45 +30,21 @@ public class UtenteManageDS implements UtenteManage {
 		}
 	}
 	
+	public UtenteManageDS(EntityManager entityManager) {
+		this.em = entityManager;
+	}
+	
 	public void close(){
 		em.close();
 	}
-
-	/*public void addUtente(Utente u) {
-		/*Connection connection = null;
-		PreparedStatement preparedStatement = null;
-
-		String insertSQL = "INSERT INTO " + UtenteManageDS.TABLE_NAME
-				+ " (codiceFiscaleUtente, nome, cognome, email, dataNascita, genere, ruolo, password, luogoNascita, "
-				+ "indirizzo, citta, cap, professione, numTelefono, numTelefonoSecondario, documentoIdentita, consensoInfo"
-				+ "consensoImgEVideo, delega, infoFamiliari)"
-				+ " VALUES (?, ? ,?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,?, ?, ?, ?, ?, ?, ?, ?)";
-
-		try {
-			connection = ds.getConnection();
-			preparedStatement = connection.prepareStatement(insertSQL);
-			preparedStatement.setString(1, u.getCodiceFiscale());
-			preparedStatement.setString(2, u.getNome());
-			preparedStatement.setString(3, u.getCognome());
-			preparedStatement.setString(4, u.getEmail());
-
-			preparedStatement.executeUpdate();
-
-			connection.commit();
-		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				if (connection != null)
-					connection.close();
-			}
-		}
-		
-	}*/
 	
 	@Override
 	public Utente getUserIfExists(String email, String password) throws NoResultException {
+		if(!email.matches("\\S+@\\S+\\.\\S+") 
+				|| !password.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$")) {
+			return null;
+		}
+		
 		try {
 			return (Utente) em.createQuery("SELECT u FROM Utente u WHERE email=:email AND password=:password")
 					.setParameter("email", email).setParameter("password", password).getSingleResult();
@@ -82,6 +58,7 @@ public class UtenteManageDS implements UtenteManage {
 	public void save(Utente u) throws PersistenceException {
 		em.getTransaction().begin();
 		em.persist(u);
+		em.flush();
 		em.getTransaction().commit();
 	}
 	
