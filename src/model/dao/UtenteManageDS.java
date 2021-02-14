@@ -56,10 +56,15 @@ public class UtenteManageDS implements UtenteManage {
 	}
 	
 	public void save(Utente u) throws PersistenceException {
-		em.getTransaction().begin();
-		em.persist(u);
-		em.flush();
-		em.getTransaction().commit();
+		if(u!=null) {
+			if(u.matches(u)) {
+				em.getTransaction().begin();
+				em.persist(u);
+				em.flush();
+				em.getTransaction().commit();
+			}
+		} else throw new IllegalArgumentException("Errore sui campi inseriti");
+		
 	}
 	
 	private static final String TABLE_NAME = "utente";

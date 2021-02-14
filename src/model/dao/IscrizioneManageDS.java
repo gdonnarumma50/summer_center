@@ -25,9 +25,12 @@ public class IscrizioneManageDS implements IscrizioneManage {
 	
 	public void save(Iscrizione i) throws PersistenceException {
 		if(i!=null) {
-			em.getTransaction().begin();
-			em.persist(i);
-			em.getTransaction().commit();
+			if(i.matches(i)) {
+				em.getTransaction().begin();
+				em.persist(i);
+				em.getTransaction().commit();
+			} else throw new IllegalArgumentException("I campi non rispettano i controlli");
+			
 		}
 	}
 

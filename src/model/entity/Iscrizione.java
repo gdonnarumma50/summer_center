@@ -114,6 +114,16 @@ public class Iscrizione implements Serializable {
 				+ ", pagata=" + pagata + ", bambino=" + bambino + ", genitore=" + genitore + ", settimane=" + settimane
 				+ "]";
 	}
+	
+	public static final boolean matches(Iscrizione i) {
+		if(!i.getQrCode().matches("^[A-Za-z 0-9 ]{2,}$")
+			|| i.getDataIscrizione().after(new Date())
+			|| !i.getTipoSoggiorno().matches("^[A-Za-z -]{9,9}$")) {
+			
+			return false;
+			
+		} else return true;
+	}
 
 
 	public static final String FIND_ISCRIZIONE_BY_GENITORE = "Iscrizione.findIscrizioneByGenitore";

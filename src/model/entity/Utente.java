@@ -82,6 +82,19 @@ public abstract class Utente implements Serializable {
 				+ numTelefono + ", eta=" + eta + "]";
 	}
 
+	public static final boolean matches(Utente u) {
+		if(!u.getNome().matches("^[A-Za-z ]{3,}$")
+			|| !u.getCognome().matches("^[A-Za-z ]{3,}$")
+			|| !u.getCodiceFiscale().matches("^[a-zA-Z]{6}[0-9]{2}[abcdehlmprstABCDEHLMPRST]{1}[0-9]{2}([a-zA-Z]{1}[0-9]{3})[a-zA-Z]{1}$")
+			|| !u.getEmail().matches("\\S+@\\S+\\.\\S+")
+			|| !u.getNumTelefono().matches("^[0-9]{8,16}$")
+			|| !u.getPassword().matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$")
+			|| u.getDataNascita().after(new Date())) {
+			
+			return false;
+			
+		} else return true;
+	}
 
 	@Id
 	@Column(name="codiceFiscaleUtente")
