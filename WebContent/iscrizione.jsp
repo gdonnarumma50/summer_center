@@ -25,7 +25,7 @@ List<Settimana> settembre = (List<Settimana>) request.getAttribute("settembre");
 		   	if(bambini!=null) {
 		   		%>
           <div class="form-label-group">
-            <select id="bambini" class="form-control" aria-label="Default select example" onchange="onChangeBambino(this)" required autofocus>
+            <select id="bambini" class="form-control" aria-label="Default select example" onchange="onChangeBambino(this)">
               <option value="" selected></option>
               <%for(Bambino b: bambini) {
 	   				
@@ -156,7 +156,7 @@ List<Settimana> settembre = (List<Settimana>) request.getAttribute("settembre");
         <h1 class="h5 mb-3 font-weight-normal">Informazioni ai fini dell'iscrizione</h1>
 
         <div class="form-check form-switch">
-          <input name="servizioSportivo" class="form-check-input" type="checkbox" id="servizioSportivo" required autofocus>
+          <input name="servizioSportivo" class="form-check-input" type="checkbox" id="servizioSportivo">
           <label class="form-check-label" for="servizioSportivo">Servizio sportivo</label>
         </div>
 
@@ -173,7 +173,7 @@ List<Settimana> settembre = (List<Settimana>) request.getAttribute("settembre");
 
         <div class="form-label-group">
           <select name="tipoSoggiorno" class="form-control" aria-label="Default select example" required autofocus>
-            <option not selected>Tipo soggiorno</option>
+            <option selected>Tipo soggiorno</option>
             <option value="Part-Time">Part-Time</option>
             <option value="Full-Time">Full-Time</option>
           </select>
