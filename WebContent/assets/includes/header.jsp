@@ -63,17 +63,22 @@ if( pagina != null ) {
             </div>
 
             <ul class="list-unstyled components">
+             <% if(!auth) { %>
+            
+                <li class="active">
+                    <a href="${pageContext.request.contextPath}/index.jsp" data-toggle="collapse" aria-expanded="false">Login</a>
+                </li>
+                
+            <%}%>
             <% if(auth) { %>
             
                 <p>
                 <%= utente.getNome()+" "+utente.getCognome() %>
                 </p>
                 
-            <%}%>
-                <li class="active">
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
+                 <li class="active">
+                    <a href="${pageContext.request.contextPath}/dashboard.jsp">Dashboard</a>
                 </li>
-                <% if(auth) { %>
                 <li>
                 <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Iscrizione</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
@@ -84,7 +89,6 @@ if( pagina != null ) {
                             <a href="${pageContext.request.contextPath}/list_iscrizioni">Visualizza iscrizioni</a>
                         </li>
                     </ul>
-                    <a href="#">Contatti</a>
                 </li>
                 <%}%>
                 </li>
