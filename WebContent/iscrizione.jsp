@@ -52,7 +52,7 @@ List<Settimana> settembre = (List<Settimana>) request.getAttribute("settembre");
     	  </div>
 
       <div class="dati anagrafici">
-        <h1 class="h5 mb-3 font-weight-normal">Dati anagrafici</h1>
+        <h1 class="h5 mb-3 font-weight-normal text-center">Dati anagrafici</h1>
 
     	  <div class="form-label">
     	  	<label for="nome">Nome</label>
@@ -95,7 +95,7 @@ List<Settimana> settembre = (List<Settimana>) request.getAttribute("settembre");
       </div>
 
       <div class="esigenze">
-        <h1 class="h5 mb-3 font-weight-normal">Esigenze</h1>
+        <h1 class="h5 mb-3 font-weight-normal text-center">Esigenze</h1>
 
           <div class="form-check form-switch">
             <input id="esigenze" name="esigenzeAlimentari" class="form-check-input" type="checkbox" id="esigenzeAlimentari">
@@ -138,7 +138,7 @@ List<Settimana> settembre = (List<Settimana>) request.getAttribute("settembre");
       </div>
 
       <div class="documenti">
-        <h1 class="h5 mb-3 font-weight-normal">Documenti</h1>
+        <h1 class="h5 mb-3 font-weight-normal text-center">Documenti</h1>
 
         <div class="form-label">
           <label for="documentoIdentita">Documento di identità</label>
@@ -153,7 +153,7 @@ List<Settimana> settembre = (List<Settimana>) request.getAttribute("settembre");
       </div>
 
       <div class="infoIscrizione">
-        <h1 class="h5 mb-3 font-weight-normal">Informazioni ai fini dell'iscrizione</h1>
+        <h1 class="h5 mb-3 font-weight-normal text-center">Informazioni ai fini dell'iscrizione</h1>
 
         <div class="form-check form-switch">
           <input name="servizioSportivo" class="form-check-input" type="checkbox" id="servizioSportivo">
@@ -179,7 +179,7 @@ List<Settimana> settembre = (List<Settimana>) request.getAttribute("settembre");
           </select>
     	  </div>
 
-        <h1 class="h5 mb-3 font-weight-normal">Seleziona periodo di soggiorno</h1>
+        <h1 class="h5 mb-3 font-weight-normal text-center">Seleziona periodo di soggiorno</h1>
         
       
         <div class="card-body">

@@ -73,6 +73,7 @@ if( pagina != null ) {
                 <li class="active">
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
                 </li>
+                <% if(auth) { %>
                 <li>
                 <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Iscrizione</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
@@ -85,6 +86,7 @@ if( pagina != null ) {
                     </ul>
                     <a href="#">Contatti</a>
                 </li>
+                <%}%>
                 </li>
             </ul>
         </nav>
