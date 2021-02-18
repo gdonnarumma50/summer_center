@@ -27,22 +27,26 @@ public class BambinoManageDS implements BambinoManage {
 
 	@Override
 	public void save(Bambino b) throws PersistenceException {
-		
-		if(b!=null) {
-			em.getTransaction().begin();
-			em.persist(b);
-			em.getTransaction().commit();
+	if(b!=null) {
+		if(b.matches(b)) {
+			
+				em.getTransaction().begin();
+				em.persist(b);
+				em.getTransaction().commit();
+			} else throw new IllegalArgumentException("I campi inseriti non rispettano i controlli");
 		}
 	}
 
 	@Override
 	public void update(Bambino b) throws PersistenceException {
-		if(b!=null) {
-			em.getTransaction().begin();
-			em.persist(b);
-			em.getTransaction().commit();
-		}
-		
+	if(b!=null) {
+		if(b.matches(b)) {
+			
+				em.getTransaction().begin();
+				em.persist(b);
+				em.getTransaction().commit();
+			} else throw new IllegalArgumentException("I campi inseriti non rispettano i controlli");
+		}	
 	}
 
 	@Override

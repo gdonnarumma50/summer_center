@@ -48,13 +48,12 @@
                     <%List<Settimana> sett = iscrizione.getSettimane();
                     	for(Settimana s: sett){%>
                     	<br>
-                    	<b> <%=s.getDataInizio()+" "+s.getDataFine()%> </b><br>
-                    	
+                    	 Dal: <b><%=s.getDataInizio()%></b><br>
+                    	 Al: 	<b><%=s.getDataFine()%> </b><br>
                 		<%}%>
                     	
                     </span><br>
                     <span>Tipo soggiorno: <b><%= iscrizione.getTipoSoggiorno() %></b></span><br>
-                    <span>Prezzo totale: <b><%= iscrizione.getPrezzo()%></b></span>
                     
                   </div>
 
@@ -62,7 +61,8 @@
 
                 </div>
               </div>
-              <div class="card-footer text-muted">
+              <div class="card-footer text-center">
+                    <span>Prezzo totale: <b><%= iscrizione.getPrezzo()%>€</b></span>
               </div>
             </div>
 

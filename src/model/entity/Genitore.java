@@ -1,6 +1,7 @@
 package model.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
@@ -96,6 +97,23 @@ public class Genitore extends Utente {
 				+ ", numTelefonoSecondario=" + numTelefonoSecondario + ", documentoIdentita=" + documentoIdentita
 				+ ", consensoInfo=" + consensoInfo + ", consensoImgEVideo=" + consensoImgEVideo + ", delega=" + delega
 				+ ", infoFamiliari=" + infoFamiliari + "]";
+	}
+	
+	public static final boolean matches(Genitore g) {
+		if(!g.getLuogoNascita().matches("^[A-Za-z 0-9 ]{2,}$")
+			|| !g.getIndirizzo().matches("^[A-Za-z 0-9,]{3,}$")
+			|| !g.getCitta().matches("^[A-Za-z -]{9,9}$")
+			|| !g.getProvincia().matches("^[a-zA-Z]{3,}$")
+			|| !g.getCAP().matches("^[0-9]{5}$")
+			|| !g.getProfessione().matches("^[a-zA-Z,]{5,}$")
+			|| !g.getNumTelefonoSecondario().matches("^[0-9]{8,16}$")
+			|| !g.getDelega().matches("^[a-zA-Z,]{5,}$")
+			|| !g.getInfoFamiliari().matches("^[a-zA-Z,]{3,}$")
+			) {
+			
+			return false;
+			
+		} else return true;
 	}
 
 

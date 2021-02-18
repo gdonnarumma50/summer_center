@@ -36,7 +36,7 @@ String error = (String) request.getAttribute("errorMessage");
 		   	if(bambini!=null) {
 		   		%>
           <div class="form-label-group">
-            <select id="bambini" class="form-control" aria-label="Default select example" onchange="onChangeBambino(this)" required autofocus>
+            <select id="bambini" class="form-control" aria-label="Default select example" onchange="onChangeBambino(this)">
               <option value="" selected></option>
               <%for(Bambino b: bambini) {
 	   				
@@ -63,7 +63,7 @@ String error = (String) request.getAttribute("errorMessage");
     	  </div>
 
       <div class="dati anagrafici">
-        <h1 class="h5 mb-3 font-weight-normal">Dati anagrafici</h1>
+        <h1 class="h5 mb-3 font-weight-normal text-center">Dati anagrafici</h1>
 
     	  <div class="form-label">
     	  	<label for="nome">Nome</label>
@@ -106,7 +106,7 @@ String error = (String) request.getAttribute("errorMessage");
       </div>
 
       <div class="esigenze">
-        <h1 class="h5 mb-3 font-weight-normal">Esigenze</h1>
+        <h1 class="h5 mb-3 font-weight-normal text-center">Esigenze</h1>
 
           <div class="form-check form-switch">
             <input id="esigenze" name="esigenzeAlimentari" class="form-check-input" type="checkbox" id="esigenzeAlimentari">
@@ -149,7 +149,7 @@ String error = (String) request.getAttribute("errorMessage");
       </div>
 
       <div class="documenti">
-        <h1 class="h5 mb-3 font-weight-normal">Documenti</h1>
+        <h1 class="h5 mb-3 font-weight-normal text-center">Documenti</h1>
 
         <div class="form-label">
           <label for="documentoIdentita">Documento di identità</label>
@@ -164,10 +164,10 @@ String error = (String) request.getAttribute("errorMessage");
       </div>
 
       <div class="infoIscrizione">
-        <h1 class="h5 mb-3 font-weight-normal">Informazioni ai fini dell'iscrizione</h1>
+        <h1 class="h5 mb-3 font-weight-normal text-center">Informazioni ai fini dell'iscrizione</h1>
 
         <div class="form-check form-switch">
-          <input name="servizioSportivo" class="form-check-input" type="checkbox" id="servizioSportivo" required autofocus>
+          <input name="servizioSportivo" class="form-check-input" type="checkbox" id="servizioSportivo">
           <label class="form-check-label" for="servizioSportivo">Servizio sportivo</label>
         </div>
 
@@ -184,13 +184,13 @@ String error = (String) request.getAttribute("errorMessage");
 
         <div class="form-label-group">
           <select name="tipoSoggiorno" class="form-control" aria-label="Default select example" required autofocus>
-            <option not selected>Tipo soggiorno</option>
+            <option selected>Tipo soggiorno</option>
             <option value="Part-Time">Part-Time</option>
             <option value="Full-Time">Full-Time</option>
           </select>
     	  </div>
 
-        <h1 class="h5 mb-3 font-weight-normal">Seleziona periodo di soggiorno</h1>
+        <h1 class="h5 mb-3 font-weight-normal text-center">Seleziona periodo di soggiorno</h1>
         
       
         <div class="card-body">

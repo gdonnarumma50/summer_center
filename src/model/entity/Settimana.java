@@ -61,9 +61,6 @@ public class Settimana implements Serializable {
 	public void setDisponibilita(int disponibilita) {
 		this.disponibilita = disponibilita;
 	}
-	
-	
-	
 
 
 	private static final long serialVersionUID = 1L;

@@ -133,6 +133,10 @@ label {
     margin-bottom: 0.3rem;
 }
 
+label.error{
+	color: #ff0000;
+}
+
 
 @supports (-ms-ime-align: auto) {
   .form-label-group > label {
@@ -332,5 +336,16 @@ a.article:hover {
     background: #6d7fcc !important;
     color: #fff !important;
 }
+
+/* ---------------------------------------------------
+    DASHBOARD STYLE
+----------------------------------------------------- */
+div.dashboard{
+	margin-bottom: 40px;
+  	padding: 70px;
+
+	}
+
+
 
 

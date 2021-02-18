@@ -145,11 +145,14 @@ public class Bambino implements Serializable {
 			|| !b.getCognome().matches("^[A-Za-z ]{3,}$")
 			|| !b.getCodiceFiscale().matches("^[a-zA-Z]{6}[0-9]{2}[abcdehlmprstABCDEHLMPRST]{1}[0-9]{2}([a-zA-Z]{1}[0-9]{3})[a-zA-Z]{1}$")
 			|| (b.getEta()>=18)
-			|| b.getDataNascita().after(new Date())
+			|| (b.getDataNascita()==null||b.getDataNascita().after(new Date()))
 			|| !b.getLuogoNascita().matches("^[A-Za-z ]{3,}$")
-			|| !b.getInfoEsigenzeAlimentari().matches("^[A-Za-z 0-9]$")
-			|| !b.getFarmaci().matches("^[A-Za-z 0-9]$")
-			|| !b.getInfoAllergie().matches("^[A-Za-z 0-9]$")) {
+			|| (b.getCertificatoMedico()!=null && !b.getCertificatoMedico().matches("^[A-Za-z 0-9 ]{2,}$"))
+			|| (b.getDocumentoIdentita()!=null && !b.getDocumentoIdentita().matches("^[A-Za-z 0-9 ]{2,}$"))
+			|| (b.getInfoEsigenzeAlimentari()!=null && !b.getInfoEsigenzeAlimentari().matches("^[A-Za-z 0-9 ]{2,}$"))
+			|| (b.getFarmaci()!=null && !b.getFarmaci().matches("^[A-Za-z 0-9 ]{2,}$"))
+			|| (b.getInfoAllergie()!=null && !b.getInfoAllergie().matches("^[A-Za-z 0-9 ]{2,}$"))
+			|| (b.getTagliaIndumenti()!=null && !b.getTagliaIndumenti().matches("^[A-Za-z ]{1,4}$"))) {
 			
 			return false;
 			
