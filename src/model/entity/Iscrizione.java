@@ -118,7 +118,9 @@ public class Iscrizione implements Serializable {
 	public static final boolean matches(Iscrizione i) {
 		if(!i.getQrCode().matches("^[A-Za-z 0-9 ]{2,}$")
 			|| i.getDataIscrizione().after(new Date())
-			|| !i.getTipoSoggiorno().matches("^[A-Za-z -]{9,9}$")) {
+			|| !i.getTipoSoggiorno().matches("^[A-Za-z -]{9,9}$")
+			|| i.getSettimane()==null)
+		{
 			
 			return false;
 			
