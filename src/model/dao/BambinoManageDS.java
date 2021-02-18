@@ -3,12 +3,10 @@ package model.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import javax.persistence.PersistenceException;
 
 import listener.LocalEntityManagerFactory;
 import model.entity.Bambino;
-import model.entity.Utente;
 
 public class BambinoManageDS implements BambinoManage {
 
@@ -20,7 +18,9 @@ public class BambinoManageDS implements BambinoManage {
 			throw ex;
 		}
 	}
-	
+	public BambinoManageDS(EntityManager entityManager) {
+		this.em = entityManager;
+	}	
 	public void close(){
 		em.close();
 	}
@@ -28,7 +28,7 @@ public class BambinoManageDS implements BambinoManage {
 	@Override
 	public void save(Bambino b) throws PersistenceException {
 	if(b!=null) {
-		if(b.matches(b)) {
+		if(Bambino.matches(b)) {
 			
 				em.getTransaction().begin();
 				em.persist(b);
@@ -40,7 +40,7 @@ public class BambinoManageDS implements BambinoManage {
 	@Override
 	public void update(Bambino b) throws PersistenceException {
 	if(b!=null) {
-		if(b.matches(b)) {
+		if(Bambino.matches(b)) {
 			
 				em.getTransaction().begin();
 				em.persist(b);

@@ -18,14 +18,16 @@ public class IscrizioneManageDS implements IscrizioneManage {
 			throw ex;
 		}
 	}
-	
+	public IscrizioneManageDS(EntityManager entityManager) {
+		this.em = entityManager;
+	}	
 	public void close(){
 		em.close();
 	}
 	
 	public void save(Iscrizione i) throws PersistenceException {
 		if(i!=null) {
-			if(i.matches(i)) {
+			if(Iscrizione.matches(i)) {
 				em.getTransaction().begin();
 				em.persist(i);
 				em.getTransaction().commit();

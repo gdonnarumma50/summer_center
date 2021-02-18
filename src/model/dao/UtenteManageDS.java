@@ -57,7 +57,7 @@ public class UtenteManageDS implements UtenteManage {
 	
 	public void save(Utente u) throws PersistenceException {
 		if(u!=null) {
-			if(u.matches(u)) {
+			if(Utente.matches(u)) {
 				em.getTransaction().begin();
 				em.persist(u);
 				em.flush();
