@@ -337,4 +337,15 @@ a.article:hover {
     color: #fff !important;
 }
 
+/* ---------------------------------------------------
+    DASHBOARD STYLE
+----------------------------------------------------- */
+div.dashboard{
+	margin-bottom: 40px;
+  	padding: 70px;
+
+	}
+
+
+
 

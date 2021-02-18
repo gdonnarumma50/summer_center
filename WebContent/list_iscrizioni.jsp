@@ -49,7 +49,9 @@
                 <td>
 					<%List<Settimana> sett = isc.getSettimane();
 					for(Settimana s: sett){%>
-                	<%=s.getDataInizio()+" "+s.getDataFine()%><br>
+                	<%=s.getDataInizio()%><br>
+                	<%=s.getDataFine()%><br>
+                	-<br>
                 	<%}%>
 				</td>
                 <td><%=isc.getPrezzo()%></td>
