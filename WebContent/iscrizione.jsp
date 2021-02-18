@@ -8,11 +8,22 @@ List<Settimana> luglio = (List<Settimana>) request.getAttribute("luglio");
 List<Settimana> agosto = (List<Settimana>) request.getAttribute("agosto"); 
 List<Settimana> settembre = (List<Settimana>) request.getAttribute("settembre"); 
 
+String error = (String) request.getAttribute("errorMessage");
+
 %>
 <%@include file="./assets/includes/header.jsp" %>
 
 
 <div class="container" style="position: relative">
+
+		<%if(error != null) { %>
+			<div class="alert alert-danger alert-dismissible fade show" role="alert">
+			  <strong><%=error %></strong>
+			  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			    <span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+		<%} %>
 
     	<form id="form_iscrizione" class="form-register" action="iscrizione" method="post" data-toggle="validator" role="form" novalidate>
 
