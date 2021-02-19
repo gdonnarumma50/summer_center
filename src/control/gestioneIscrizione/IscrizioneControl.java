@@ -1,6 +1,7 @@
 package control.gestioneIscrizione;
 
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -9,10 +10,12 @@ import java.util.List;
 import javax.persistence.PersistenceException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import model.dao.BambinoManage;
 import model.dao.BambinoManageDS;
@@ -32,6 +35,7 @@ import model.entity.Settimana;
  * Servlet implementation class IscrizioneControl
  */
 @WebServlet("/iscrizione")
+@MultipartConfig
 public class IscrizioneControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -116,32 +120,52 @@ public class IscrizioneControl extends HttpServlet {
 		String cognome = (String) request.getParameter("cognome");
 		String dataNascita = (String) request.getParameter("dataNascita");
 		String luogoNascita = (String) request.getParameter("luogoNascita");
-		char genere = request.getParameter("genere").charAt(0);
+		String genere = (String) request.getParameter("genere");
 		boolean disabilita = Boolean.parseBoolean(request.getParameter("disabilita"));
 		boolean esigenzeAlimentari = Boolean.parseBoolean(request.getParameter("esigenzeAlimentari"));
 		boolean ausilioMaterialeGalleggiante = Boolean.parseBoolean(request.getParameter("ausilioMaterialeGalleggiante"));
 		String infoEsigenzeAlimentari = (String) request.getParameter("infoEsigenzeAlimentari");
 		String farmaci = (String) request.getParameter("farmaci");
 		String infoAllergie = (String) request.getParameter("infoAllergie");
-		String documentoIdentita = (String) request.getParameter("documentoIdentita");
-		String certificatoMedico = (String) request.getParameter("certificatoMedico");
 		boolean servizioSportivo = Boolean.parseBoolean(request.getParameter("servizioSportivo"));
 		String tagliaIndumenti = (String) request.getParameter("tagliaIndumenti");
 		String tipoSoggiorno = (String) request.getParameter("tipoSoggiorno");
-		String periodoSoggiorno = (String) request.getParameter("periodoSoggiorno");
-		String[] settimane = request.getParameterValues("settimane");
-		
-		String[] dataN = dataNascita.split("-", 3);
-		
-		for(String s:settimane) {
-			System.out.println(s);
-		}
-		
 		Genitore genitore = (Genitore) request.getSession(false).getAttribute("utente");
+		
+		Part fileDocIdentita = request.getPart("documentoIdentita");
+	    String documentoIdentita = Paths.get(fileDocIdentita.getSubmittedFileName()).getFileName().toString();
+	    
+	    Part fileCertificatoMedico = request.getPart("documentoIdentita");
+	    String certificatoMedico = Paths.get(fileCertificatoMedico.getSubmittedFileName()).getFileName().toString();
 		
 		if(genitore==null) {
 			//TODO: page 403 forbidden
 			return;
+		}
+		
+		String[] settimane = {};
+		if(request.getParameterValues("settimane") != null) {
+			settimane = request.getParameterValues("settimane");
+		}
+		
+		if( (codiceFiscale == null || codiceFiscale.isEmpty()) || 
+			(nome == null || nome.isEmpty()) ||
+			(cognome == null || cognome.isEmpty()) ||
+			(dataNascita == null) ||
+			(luogoNascita == null || luogoNascita.isEmpty()) || 
+			(tagliaIndumenti == null || tagliaIndumenti.isEmpty()) ||
+			(tipoSoggiorno == null || tipoSoggiorno.isEmpty()) ||
+			(settimane.length == 0) || 
+			(!documentoIdentita.matches("([a-zA-Z0-9\\s_\\\\.\\-\\(\\):])+(.jpeg|.png|.pdf)$")) ||
+			(!certificatoMedico.matches("([a-zA-Z0-9\\s_\\\\.\\-\\(\\):])+(.jpeg|.png|.pdf)$"))
+		) {
+			request.setAttribute("errorMessage", "Il formato dei dati è errato!");
+			this.doGet(request, response);
+			return;
+		}
+		
+		for(String s:settimane) {
+			System.out.println(s);
 		}
 	
 		
@@ -158,28 +182,29 @@ public class IscrizioneControl extends HttpServlet {
 				bambino.setInfoEsigenzeAlimentari(infoEsigenzeAlimentari);
 				bambino.setFarmaci(farmaci);
 				bambino.setInfoAllergie(infoAllergie);
-				bambino.setDocumentoIdentita("./");
-				bambino.setCertificatoMedico("./");
+				bambino.setDocumentoIdentita(documentoIdentita);
+				bambino.setCertificatoMedico(certificatoMedico);
 				bambino.setTagliaIndumenti(tagliaIndumenti);
+				bambino.setEta(new Date().getYear() - bambino.getDataNascita().getYear());
 				bambinoManage.update(bambino);
 			} else {
 				newBambino.setCodiceFiscale(codiceFiscale);
 				newBambino.setNome(nome);
 				newBambino.setCognome(cognome);
-				//new Date(Integer.parseInt(dataN[0]), Integer.parseInt(dataN[1]), Integer.parseInt(dataN[2]))
 				newBambino.setDataNascita(java.sql.Date.valueOf(dataNascita));
 				newBambino.setLuogoNascita(luogoNascita);
-				newBambino.setGenere(genere);
+				newBambino.setGenere(genere.charAt(0));
 				newBambino.setDisabilita(disabilita);
 				newBambino.setEsigenzeAlimentari(esigenzeAlimentari);
 				newBambino.setAusilioMaterialeGalleggiante(ausilioMaterialeGalleggiante);
 				newBambino.setInfoEsigenzeAlimentari(infoEsigenzeAlimentari);
 				newBambino.setFarmaci(farmaci);
 				newBambino.setInfoAllergie(infoAllergie);
-				newBambino.setDocumentoIdentita("./");
-				newBambino.setCertificatoMedico("./");
+				newBambino.setDocumentoIdentita(documentoIdentita);
+				newBambino.setCertificatoMedico(certificatoMedico);
 				newBambino.setTagliaIndumenti(tagliaIndumenti);
 				newBambino.setGenitore(genitore);
+				newBambino.setEta(new Date().getYear() - java.sql.Date.valueOf(dataNascita).getYear());
 				bambinoManage.save(newBambino);
 			}
 			
@@ -210,8 +235,10 @@ public class IscrizioneControl extends HttpServlet {
 			iscrizione.setSettimane(listaSettimane);
 			
 			iscrizioneManage.save(iscrizione);
-		} catch(PersistenceException e) {
-			System.out.println(e);
+			response.sendRedirect(request.getContextPath()+"/list_iscrizioni");
+		} catch(Exception e) {
+			//TODO: page error
+			System.out.println(e.getMessage());
 			e.printStackTrace();
 		}
 	}

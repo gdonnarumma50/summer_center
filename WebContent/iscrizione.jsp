@@ -25,7 +25,7 @@ String error = (String) request.getAttribute("errorMessage");
 			</div>
 		<%} %>
 
-    	<form id="form_iscrizione" class="form-register" action="iscrizione" method="post" data-toggle="validator" role="form" novalidate>
+    	<form id="form_iscrizione" class="form-register" action="#" method="post" data-toggle="validator" role="form" enctype="multipart/form-data" novalidate>
 
     	  <div class="text-center mb-4">
     	    <img class="mb-4" src="assets/images/Logo_SummerCamp.png" alt="American Delights" width="250" height="200">
@@ -36,12 +36,12 @@ String error = (String) request.getAttribute("errorMessage");
 		   	if(bambini!=null) {
 		   		%>
           <div class="form-label-group">
-            <select id="bambini" class="form-control" aria-label="Default select example" onchange="onChangeBambino(this)">
+            <select id="bambini" class="form-control" aria-label="Default select example">
               <option value="" selected></option>
               <%for(Bambino b: bambini) {
 	   				
 	   				%>
-              <option 
+              <option
               data-nome="<%=b.getNome() %>" 
               data-cogn="<%=b.getCognome() %>" 
               data-nascita="<%=b.getDataNascita() %>" 
@@ -97,7 +97,7 @@ String error = (String) request.getAttribute("errorMessage");
 
         <div class="form-label">
           <select id="genere" name="genere" class="form-control" aria-label="Default select example" required autofocus>
-            <option selected>Genere</option>
+            <option value="" selected>Genere</option>
             <option value="M">Maschio</option>
             <option value="F">Femmina</option>
           </select>
@@ -109,17 +109,17 @@ String error = (String) request.getAttribute("errorMessage");
         <h1 class="h5 mb-3 font-weight-normal text-center">Esigenze</h1>
 
           <div class="form-check form-switch">
-            <input id="esigenze" name="esigenzeAlimentari" class="form-check-input" type="checkbox" id="esigenzeAlimentari">
+            <input id="esigenze" name="esigenzeAlimentari" value="true" class="form-check-input" type="checkbox" id="esigenzeAlimentari">
             <label class="form-check-label" for="esigenzeAlimentari">Esigenze alimentari</label>
           </div>
 
           <div class="form-check form-switch">
-            <input id="disabilita" name="disabilita" class="form-check-input" type="checkbox" id="disabilita">
+            <input id="disabilita" name="disabilita" value="true" class="form-check-input" type="checkbox" id="disabilita">
             <label class="form-check-label" for="disabilita">Disabilità</label>
           </div>
 
           <div class="form-check form-switch">
-            <input id="materialeGal" name="ausilioMaterialeGalleggiante" class="form-check-input" type="checkbox" id="ausilioMaterialeGalleggiante">
+            <input id="materialeGal" name="ausilioMaterialeGalleggiante" value="true" class="form-check-input" type="checkbox" id="ausilioMaterialeGalleggiante">
             <label class="form-check-label" for="ausilioMaterialeGalleggiante">Ausilio materiale galleggiante</label>
           </div>
 
@@ -153,12 +153,12 @@ String error = (String) request.getAttribute("errorMessage");
 
         <div class="form-label">
           <label for="documentoIdentita">Documento di identità</label>
-          <input type="file" class="form-control-file" id="documentoIdentita" required autofocus>
+          <input name="documentoIdentita" type="file" class="form-control-file" id="documentoIdentita" required autofocus>
         </div>
 
         <div class="form-label">
           <label for="certificatoMedico">Certificato medico</label>
-          <input type="file" class="form-control-file" id="certificatoMedico" required autofocus>
+          <input name="certificatoMedico" type="file" class="form-control-file" id="certificatoMedico" required autofocus>
         </div>
 
       </div>
@@ -167,7 +167,7 @@ String error = (String) request.getAttribute("errorMessage");
         <h1 class="h5 mb-3 font-weight-normal text-center">Informazioni ai fini dell'iscrizione</h1>
 
         <div class="form-check form-switch">
-          <input name="servizioSportivo" class="form-check-input" type="checkbox" id="servizioSportivo">
+          <input name="servizioSportivo" value="true" class="form-check-input" type="checkbox" id="servizioSportivo">
           <label class="form-check-label" for="servizioSportivo">Servizio sportivo</label>
         </div>
 
@@ -184,7 +184,7 @@ String error = (String) request.getAttribute("errorMessage");
 
         <div class="form-label-group">
           <select name="tipoSoggiorno" class="form-control" aria-label="Default select example" required autofocus>
-            <option selected>Tipo soggiorno</option>
+            <option value="" selected>Tipo soggiorno</option>
             <option value="Part-Time">Part-Time</option>
             <option value="Full-Time">Full-Time</option>
           </select>
