@@ -149,9 +149,9 @@ public class Bambino implements Serializable {
 			|| (!b.getLuogoNascita().matches("^[A-Za-z ]{3,}$"))
 			|| (b.getCertificatoMedico()!=null && !b.getCertificatoMedico().matches("([a-zA-Z0-9\\s_\\\\.\\-\\(\\):])+(.jpeg|.png|.pdf)$"))
 			|| (b.getDocumentoIdentita()!=null && !b.getDocumentoIdentita().matches("([a-zA-Z0-9\\s_\\\\.\\-\\(\\):])+(.jpeg|.png|.pdf)$"))
-			|| (b.getInfoEsigenzeAlimentari()!=null && !b.getInfoEsigenzeAlimentari().matches("^[A-Za-z 0-9 ]{2,}$"))
-			|| (b.getFarmaci()!=null && !b.getFarmaci().matches("^[A-Za-z 0-9 ]{2,}$"))
-			|| (b.getInfoAllergie()!=null && !b.getInfoAllergie().matches("^[A-Za-z 0-9 ]{2,}$"))
+			|| (b.getInfoEsigenzeAlimentari()!=null && !b.getInfoEsigenzeAlimentari().matches("^[A-Za-z 0-9 ]{0,}$"))
+			|| (b.getFarmaci()!=null && !b.getFarmaci().matches("^[A-Za-z 0-9 ]{0,}$"))
+			|| (b.getInfoAllergie()!=null && !b.getInfoAllergie().matches("^[A-Za-z 0-9 ]{0,}$"))
 			|| (b.getTagliaIndumenti()!=null && !b.getTagliaIndumenti().matches("^[A-Za-z ]{1,4}$"))) {
 			
 			return false;
