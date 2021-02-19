@@ -53,7 +53,7 @@ CREATE TABLE `bambino` (
 
 LOCK TABLES `bambino` WRITE;
 /*!40000 ALTER TABLE `bambino` DISABLE KEYS */;
-INSERT INTO `bambino` VALUES ('ANTCLM02E12R431A','Marco','Esposito','2014-07-12','Pagani',0,'/',1,'/','0','nessuna',0,'M','SPSVCN04E09C321S',NULL,'M'),('BNNTRYEUDIC15267','Luigi','Donnarumma','2014-09-10','Nocera Inferiore',0,'/',1,'/','0','nessuna',0,'M','DNNGRD12D05F456D',NULL,'M'),('DDDPLC10A45D321A','Paola','Dalia','2017-04-05','Angri',0,'/',1,'/','0','nessuna',0,'M','DADANT22C05C234S',NULL,'F'),('GNLRSS06R02C987S','Gianluca','Rossi','2015-04-04','Pagani',0,'/',1,'/','0','nessuna ',0,'M','MRARSS00E02F123S',NULL,'M'),('ZZPALF12D02C321S','Alfonso','Esposito','2013-02-03','Angri',0,'/',1,'/','0','nessuna',0,'M','SPSVCN04E09C321S',NULL,'M');
+INSERT INTO `bambino` VALUES ('ANTCLM02E12R431A','Marco','Esposito','2014-07-12','Pagani',0,'/',1,'/','0','nessuna',0,'M','SPSVCN04E09C321S',NULL,'M'),('BNNTRYEUDIC15267','Luigi','Donnarumma','2014-09-10','Napoli',0,'/',1,'/','0','nessuna',0,'M','DNNGRD12D05F456D',NULL,'M'),('DDDPLC10A45D321A','Paola','Dalia','2017-04-05','Angri',0,'/',1,'/','0','nessuna',0,'M','DADANT22C05C234S',NULL,'F'),('GNLRSS06R02C987S','Gianluca','Rossi','2015-04-04','Pagani',0,'/',1,'/','0','nessuna ',0,'M','MRARSS00E02F123S',NULL,'M'),('ZZPALF12D02C321S','Alfonso','Esposito','2013-02-03','Angri',0,'/',1,'/','0','nessuna',0,'M','SPSVCN04E09C321S',NULL,'M');
 /*!40000 ALTER TABLE `bambino` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -213,7 +213,7 @@ CREATE TABLE `utente` (
 
 LOCK TABLES `utente` WRITE;
 /*!40000 ALTER TABLE `utente` DISABLE KEYS */;
-INSERT INTO `utente` VALUES ('DADANT22C05C234S','Antonio','Dalia','a.dalia@gmal.com','1998-09-12','M','genitore','Antonio123@','Nocera inferiore','Via concilio','Angri',84012,'Studente','0812345876',NULL,NULL,0,0,NULL,NULL,'Salerno'),('DNNGRD12D05F456D','Gerardo','Donnarumma','gdonnarumma50@studenti.unisa.it','1999-05-04','M','genitore','Gerardo123.','Nocera Inferiore','Via flaming','Angri',84012,'Studente','3512527871',NULL,NULL,0,0,NULL,NULL,'Salerno'),('MRARSS00E02F123S','Mario','Rossi','m.rossi@gmail.com','1978-05-04','M','genitore','Mario123@','Napoli','Via roma','Napoli',84012,'Imprenditore','3913458731',NULL,NULL,1,1,NULL,NULL,'Napoli'),('SPSVCN04E09C321S','Vincenzo','Esposito','v.esposito@gmail.com','2000-05-04','M','genitore','Vincenzo123@','Castellammare','Via annunzita','Angri',84012,'Studente','3339856871',NULL,NULL,0,0,NULL,NULL,'Salerno');
+INSERT INTO `utente` VALUES ('DADANT22C05C234S','Antonio','Dalia','a.dalia@gmal.com','1998-09-12','M','genitore','Antonio123@','Nocera inferiore','Via concilio','Angri',84012,'Studente','0812345876',NULL,NULL,0,0,NULL,NULL,'Salerno'),('DNNGRD12D05F456D','Gerardo','Donnarumma','gdonnarumma50@studenti.unisa.it','1999-05-04','M','genitore','Gerardo123.','Pagani','Via flaming','Angri',84012,'Studente','3512527871',NULL,NULL,0,0,NULL,NULL,'Salerno'),('MRARSS00E02F123S','Mario','Rossi','m.rossi@gmail.com','1978-05-04','M','genitore','Mario123@','Napoli','Via roma','Napoli',84012,'Imprenditore','3913458731',NULL,NULL,1,1,NULL,NULL,'Napoli'),('SPSVCN04E09C321S','Vincenzo','Esposito','v.esposito@gmail.com','2000-05-04','M','genitore','Vincenzo123@','Castellammare','Via annunzita','Angri',84012,'Studente','3339856871',NULL,NULL,0,0,NULL,NULL,'Salerno');
 /*!40000 ALTER TABLE `utente` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -226,4 +226,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-02-17 17:10:38
+-- Dump completed on 2021-02-20  0:11:14
