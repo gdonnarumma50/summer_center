@@ -2,7 +2,6 @@
 <%
 // Check user credentials
 Utente utente = (Utente) request.getSession(false).getAttribute("utente");
-String pagina = (String) request.getAttribute("page");
 
 boolean auth;
 
@@ -13,16 +12,6 @@ if (utente == null)
 else {
 	auth = true;
 }
-
-if( pagina != null ) {
-	if( (pagina.equalsIgnoreCase("login") ) && (auth) )
-	{
-		response.sendRedirect("./index");
-	}
-}
-/*else {
-	response.sendRedirect("./index");
-}*/
 
 %>
 <!DOCTYPE html>

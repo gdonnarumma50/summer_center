@@ -70,10 +70,10 @@ $(document).ready(function() {
 		const tagliaSel = $("#bambini :selected").attr("data-taglia");
 		const materialeGalSel = $("#bambini :selected").attr("data-materialeGal");
 		
-		infoEsigenze.value = infoEsigenzeSel ? infoEsigenzeSel : "";
-		farmaci.value = farmaciSel ? farmaciSel : "";
+		infoEsigenze.value = infoEsigenzeSel && infoEsigenzeSel !== 'null' ? infoEsigenzeSel : "";
+		farmaci.value = farmaciSel && infoEsigenzeSel !== 'null' ? farmaciSel : "";
 		
-		allergie.value = allergieSel ? allergieSel : "";
+		allergie.value = allergieSel && infoEsigenzeSel !== 'null' ? allergieSel : "";
 		
 		taglia.value = tagliaSel ? tagliaSel : ""; 
 		
@@ -186,31 +186,6 @@ $(document).ready(function() {
         },
         // Settiamo il submit handler per la form
         submitHandler: function(form, event) {
-        	/*const settimane = document.getElementsByName('settimane').length; 
-        	const tipoSoggiorno = $("#tipoSoggiorno").value;
-        	const disabilita = $("#disabilita").value;
-        	const servizioSportivo = $("#servizioSportivo").value;
-        	const prezzo = 0;
-        	
-        	if(tipoSoggiorno.toUpperCase() === "PART-TIME") {
-    			prezzo += 50*settimane;
-    		} else {
-    			prezzo += 100*settimane;
-    		}
-    		
-    		if(disabilita) {
-    			prezzo += 50*settimane;
-    		}
-    		
-    		if(servizioSportivo) {
-    			prezzo += 20;
-    		}*/
-        	console.log(document.getElementById("disabilita").checked)
-        	
-        	
-        	console.log("Nome", document.getElementById("nome").value)
-        	
-    		
           form.submit();
         }
     });

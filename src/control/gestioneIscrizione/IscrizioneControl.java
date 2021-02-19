@@ -139,7 +139,7 @@ public class IscrizioneControl extends HttpServlet {
 	    String certificatoMedico = Paths.get(fileCertificatoMedico.getSubmittedFileName()).getFileName().toString();
 		
 		if(genitore==null) {
-			//TODO: page 403 forbidden
+			response.sendError(401, "Autenticazione non effettuata!");
 			return;
 		}
 		
@@ -159,7 +159,7 @@ public class IscrizioneControl extends HttpServlet {
 			(!documentoIdentita.matches("([a-zA-Z0-9\\s_\\\\.\\-\\(\\):])+(.jpeg|.png|.pdf)$")) ||
 			(!certificatoMedico.matches("([a-zA-Z0-9\\s_\\\\.\\-\\(\\):])+(.jpeg|.png|.pdf)$"))
 		) {
-			request.setAttribute("errorMessage", "Il formato dei dati è errato!");
+			request.setAttribute("errorMessage", "Il formato dei dati è errato o le settimane non sono selezionate!");
 			this.doGet(request, response);
 			return;
 		}
