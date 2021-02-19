@@ -142,11 +142,11 @@ public class Bambino implements Serializable {
 
 	public static final boolean matches(Bambino b) {
 		if(!b.getNome().matches("^[A-Za-z ]{3,}$")
-			|| !b.getCognome().matches("^[A-Za-z ]{3,}$")
-			|| !b.getCodiceFiscale().matches("^[a-zA-Z]{6}[0-9]{2}[abcdehlmprstABCDEHLMPRST]{1}[0-9]{2}([a-zA-Z]{1}[0-9]{3})[a-zA-Z]{1}$")
+			|| (!b.getCognome().matches("^[A-Za-z ]{3,}$"))
+			|| (!b.getCodiceFiscale().matches("^[a-zA-Z]{6}[0-9]{2}[abcdehlmprstABCDEHLMPRST]{1}[0-9]{2}([a-zA-Z]{1}[0-9]{3})[a-zA-Z]{1}$"))
 			|| (b.getEta()>=18)
 			|| (b.getDataNascita()==null)
-			|| !b.getLuogoNascita().matches("^[A-Za-z ]{3,}$")
+			|| (!b.getLuogoNascita().matches("^[A-Za-z ]{3,}$"))
 			|| (b.getCertificatoMedico()!=null && !b.getCertificatoMedico().matches("([a-zA-Z0-9\\s_\\\\.\\-\\(\\):])+(.jpeg|.png|.pdf)$"))
 			|| (b.getDocumentoIdentita()!=null && !b.getDocumentoIdentita().matches("([a-zA-Z0-9\\s_\\\\.\\-\\(\\):])+(.jpeg|.png|.pdf)$"))
 			|| (b.getInfoEsigenzeAlimentari()!=null && !b.getInfoEsigenzeAlimentari().matches("^[A-Za-z 0-9 ]{2,}$"))

@@ -53,12 +53,12 @@ public class IscrizioneControl extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Utente u = (Utente) request.getSession(false).getAttribute("utente");
 		if(u==null) {
-			response.sendRedirect(request.getContextPath() + "/index.jsp");
+			response.sendError(401, "Autenticazione non effettuata!");
 			return;
 		} 
 		
 		if(!(u instanceof Genitore)) {
-			//TODO: page forbidden
+			response.sendError(403, "Non sei autorizzato!");
 			return;
 		}
 		
@@ -172,6 +172,18 @@ public class IscrizioneControl extends HttpServlet {
 		BambinoManage bambinoManage = new BambinoManageDS();
 		Bambino bambino = bambinoManage.getBambino(codiceFiscale);
 		UtenteManage utenteManage = new UtenteManageDS();
+		
+		if(infoAllergie.isEmpty()) {
+			infoAllergie = null;
+		}
+		
+		if(infoEsigenzeAlimentari.isEmpty()) {
+			infoEsigenzeAlimentari = null;
+		}
+		
+		if(farmaci.isEmpty()) {
+			farmaci = null;
+		}
 		
 		Bambino newBambino = new Bambino();
 		try {

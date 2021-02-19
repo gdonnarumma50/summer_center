@@ -42,12 +42,12 @@ public class SingolaIscrizioneControl extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Utente u = (Utente) request.getSession(false).getAttribute("utente");
 		if(u==null) {
-			response.sendRedirect(request.getContextPath() + "/index.jsp");
+			response.sendError(401, "Autenticazione non effettuata!");
 			return;
 		} 
 		
 		if(!(u instanceof Genitore)) {
-			//TODO: page forbidden
+			response.sendError(403, "Non sei autorizzato!");
 			return;
 		}
 		
