@@ -20,9 +20,7 @@ import model.entity.Iscrizione;
 import model.entity.Settimana;
 
 public class IscrizioneManageDSTest extends TestCase{
-/*	save(Iscrizione i);
-	List<Iscrizione> getIscrizioniByGenitore(String cfGenitore);
-	List<Iscrizione> getAll();         */
+
 	public void setUp() {
 		entityManager = Mockito.mock(EntityManager.class);
 		isc= new IscrizioneManageDS(entityManager);
