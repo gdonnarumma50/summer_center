@@ -146,6 +146,9 @@ $(document).ready(function() {
             certificatoMedico: {
             	required: true,
             	'patternFile': true
+            },
+            tagliaIndumenti: {
+            	required: true
             }
         },
         // Personalizzimao i mesasggi di errore
@@ -181,6 +184,9 @@ $(document).ready(function() {
             	required: "Il campo è obbligatorio"
             },
             certificatoMedico: {
+            	required: "Il campo è obbligatorio"
+            },
+            tagliaIndumenti: {
             	required: "Il campo è obbligatorio"
             }
         },

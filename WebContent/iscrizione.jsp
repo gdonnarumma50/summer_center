@@ -23,7 +23,7 @@ String error = (String) request.getAttribute("errorMessage");
 			    <span aria-hidden="true">&times;</span>
 			  </button>
 			</div>
-		<%} %>
+		<%} %> 
 
     	<form id="form_iscrizione" class="form-register" action="iscrizione" method="post" data-toggle="validator" role="form" enctype="multipart/form-data" novalidate>
 
@@ -175,7 +175,7 @@ String error = (String) request.getAttribute("errorMessage");
         <div class="form-label">
           <label for="tagliaIndumenti">Taglia indumenti</label>
           <select id="taglia" name="tagliaIndumenti" class="form-control" aria-label="Default select example" required autofocus>
-            <option selected>Taglia indumenti</option>
+            <option value="" selected>Taglia indumenti</option>
             <option value="XS">XS</option>
             <option value="S">S</option>
             <option value="M">M</option>
