@@ -39,12 +39,12 @@ public class BambinoManageDSTest extends TestCase{
 	
 	public void testBambino1corretto() {
 		a.setAusilioMaterialeGalleggiante(false);
-		a.setCertificatoMedico("wau");
-		a.setCodiceFiscale("DLANTN98A13H703Y");
-		a.setCognome("Dalia");
+		a.setCertificatoMedico("cert.pdf");
+		a.setCodiceFiscale("RSSGLC10R10H703N");
+		a.setCognome("Rossi");
 		a.setDataNascita(data.getTime());
 		a.setDisabilita(false);
-		a.setDocumentoIdentita("ci sta");
+		a.setDocumentoIdentita("doc.pdf");
 		a.setEsigenzeAlimentari(false);
 		a.setFarmaci(null);
 		a.setGenere('M');
@@ -52,8 +52,8 @@ public class BambinoManageDSTest extends TestCase{
 		a.setInfoAllergie(null);
 		a.setInfoEsigenzeAlimentari(null);
 		a.setLuogoNascita("Salerno");
-		a.setNome("Antonio");
-		a.setTagliaIndumenti("xl");
+		a.setNome("Gianluca");
+		a.setTagliaIndumenti("s");
 		
 		bam.save(a);
 		
@@ -61,22 +61,22 @@ public class BambinoManageDSTest extends TestCase{
 	
 	
 	public void testBambino2ConOpzionali() {
-		a.setAusilioMaterialeGalleggiante(false);
-		a.setCertificatoMedico("wau");
-		a.setCodiceFiscale("DLANTN98A13H703Y");
-		a.setCognome("Dalia");
+		a.setAusilioMaterialeGalleggiante(true);
+		a.setCertificatoMedico("cert.pdf");
+		a.setCodiceFiscale("RSSGLC10R10H703N");
+		a.setCognome("Rossi");
 		a.setDataNascita(data.getTime());
 		a.setDisabilita(false);
-		a.setDocumentoIdentita("ci sta");
-		a.setEsigenzeAlimentari(false);
+		a.setDocumentoIdentita("ci sta.pdf");
+		a.setEsigenzeAlimentari(true);
 		a.setFarmaci("si");
 		a.setGenere('M');
 		a.setGenitore(genitore);
 		a.setInfoAllergie("si");
-		a.setInfoEsigenzeAlimentari("si");
+		a.setInfoEsigenzeAlimentari("Pane e acqua");
 		a.setLuogoNascita("Salerno");
-		a.setNome("Antonio");
-		a.setTagliaIndumenti("xl");
+		a.setNome("Gianluca");
+		a.setTagliaIndumenti("s");
 		
 		bam.save(a);
 		
@@ -84,12 +84,12 @@ public class BambinoManageDSTest extends TestCase{
 	
 	public void testBambino3FormatoFileErrato() {
 		a.setAusilioMaterialeGalleggiante(false);
-		a.setCertificatoMedico("");
-		a.setCodiceFiscale("DLANTN98A13H703Y");
-		a.setCognome("Dalia");
+		a.setCertificatoMedico("cert.ppt");
+		a.setCodiceFiscale("RSSGLC10R10H703N");
+		a.setCognome("Rossi");
 		a.setDataNascita(data.getTime());
 		a.setDisabilita(false);
-		a.setDocumentoIdentita("");
+		a.setDocumentoIdentita("doc.xml");
 		a.setEsigenzeAlimentari(false);
 		a.setFarmaci(null);
 		a.setGenere('M');
@@ -97,8 +97,8 @@ public class BambinoManageDSTest extends TestCase{
 		a.setInfoAllergie(null);
 		a.setInfoEsigenzeAlimentari(null);
 		a.setLuogoNascita("Salerno");
-		a.setNome("Antonio");
-		a.setTagliaIndumenti("xl");
+		a.setNome("Gianluca");
+		a.setTagliaIndumenti("s");
 		
 		
 		
@@ -113,12 +113,12 @@ public class BambinoManageDSTest extends TestCase{
 	
 	public void testBambino4FormatoCFErrato() {
 		a.setAusilioMaterialeGalleggiante(false);
-		a.setCertificatoMedico("wau");
-		a.setCodiceFiscale("DLANTN98A13H703");
-		a.setCognome("Dalia");
+		a.setCertificatoMedico("cert.pdf");
+		a.setCodiceFiscale("RSSGLC10R10H703");
+		a.setCognome("Rossi");
 		a.setDataNascita(data.getTime());
 		a.setDisabilita(false);
-		a.setDocumentoIdentita("ci sta");
+		a.setDocumentoIdentita("doc.pdf");
 		a.setEsigenzeAlimentari(false);
 		a.setFarmaci(null);
 		a.setGenere('M');
@@ -126,8 +126,8 @@ public class BambinoManageDSTest extends TestCase{
 		a.setInfoAllergie(null);
 		a.setInfoEsigenzeAlimentari(null);
 		a.setLuogoNascita("Salerno");
-		a.setNome("Antonio");
-		a.setTagliaIndumenti("xl");
+		a.setNome("Gianluca");
+		a.setTagliaIndumenti("s");
 		
 		
 		
@@ -143,12 +143,12 @@ public class BambinoManageDSTest extends TestCase{
 	
 	public void testBambino5FormatoNomeErrato() {
 		a.setAusilioMaterialeGalleggiante(false);
-		a.setCertificatoMedico("wau");
-		a.setCodiceFiscale("DLANTN98A13H703Y");
-		a.setCognome("Dalia");
+		a.setCertificatoMedico("cert.pdf");
+		a.setCodiceFiscale("RSSGLC10R10H703N");
+		a.setCognome("Rossi");
 		a.setDataNascita(data.getTime());
 		a.setDisabilita(false);
-		a.setDocumentoIdentita("ci sta");
+		a.setDocumentoIdentita("doc.pdf");
 		a.setEsigenzeAlimentari(false);
 		a.setFarmaci(null);
 		a.setGenere('M');
@@ -156,8 +156,8 @@ public class BambinoManageDSTest extends TestCase{
 		a.setInfoAllergie(null);
 		a.setInfoEsigenzeAlimentari(null);
 		a.setLuogoNascita("Salerno");
-		a.setNome("1234");
-		a.setTagliaIndumenti("xl");
+		a.setNome("Gianluca2");
+		a.setTagliaIndumenti("s");
 		
 		
 		try {
@@ -172,12 +172,12 @@ public class BambinoManageDSTest extends TestCase{
 	
 	public void testBambino6FormatoCognomeErrato() {
 		a.setAusilioMaterialeGalleggiante(false);
-		a.setCertificatoMedico("wau");
-		a.setCodiceFiscale("DLANTN98A13H703Y");
-		a.setCognome("1234");
+		a.setCertificatoMedico("cert.pdf");
+		a.setCodiceFiscale("RSSGLC10R10H703N");
+		a.setCognome("Rossi4");
 		a.setDataNascita(data.getTime());
 		a.setDisabilita(false);
-		a.setDocumentoIdentita("ci sta");
+		a.setDocumentoIdentita("doc.pdf");
 		a.setEsigenzeAlimentari(false);
 		a.setFarmaci(null);
 		a.setGenere('M');
@@ -185,8 +185,8 @@ public class BambinoManageDSTest extends TestCase{
 		a.setInfoAllergie(null);
 		a.setInfoEsigenzeAlimentari(null);
 		a.setLuogoNascita("Salerno");
-		a.setNome("Antonio");
-		a.setTagliaIndumenti("xl");
+		a.setNome("Gianluca");
+		a.setTagliaIndumenti("s");
 		
 		
 		
@@ -201,21 +201,21 @@ public class BambinoManageDSTest extends TestCase{
 	}
 	public void testBambino7FormatoLNErrato() {
 		a.setAusilioMaterialeGalleggiante(false);
-		a.setCertificatoMedico("wau");
-		a.setCodiceFiscale("DLANTN98A13H703Y");
-		a.setCognome("Dalia");
+		a.setCertificatoMedico("cert.pdf");
+		a.setCodiceFiscale("RSSGLC10R10H703N");
+		a.setCognome("Rossi");
 		a.setDataNascita(data.getTime());
 		a.setDisabilita(false);
-		a.setDocumentoIdentita("ci sta");
+		a.setDocumentoIdentita("doc.pdf");
 		a.setEsigenzeAlimentari(false);
 		a.setFarmaci(null);
 		a.setGenere('M');
 		a.setGenitore(genitore);
 		a.setInfoAllergie(null);
 		a.setInfoEsigenzeAlimentari(null);
-		a.setLuogoNascita("1234");
-		a.setNome("Antonio");
-		a.setTagliaIndumenti("xl");
+		a.setLuogoNascita("Salerno111");
+		a.setNome("Gianluca");
+		a.setTagliaIndumenti("s");
 		
 		
 		
@@ -229,13 +229,13 @@ public class BambinoManageDSTest extends TestCase{
 	}
 	
 	
-	public void testBambino8FormatoDNErrato() {
+	public void testBambino8DNNonInserita() {
 		a.setAusilioMaterialeGalleggiante(false);
-		a.setCertificatoMedico("wau");
-		a.setCodiceFiscale("DLANTN98A13H703Y");
-		a.setCognome("Dalia");
+		a.setCertificatoMedico("cert.pdf");
+		a.setCodiceFiscale("RSSGLC10R10H703N");
+		a.setCognome("Rossi");
 		a.setDisabilita(false);
-		a.setDocumentoIdentita("ci sta");
+		a.setDocumentoIdentita("doc.pdf");
 		a.setEsigenzeAlimentari(false);
 		a.setFarmaci(null);
 		a.setGenere('M');
@@ -243,8 +243,8 @@ public class BambinoManageDSTest extends TestCase{
 		a.setInfoAllergie(null);
 		a.setInfoEsigenzeAlimentari(null);
 		a.setLuogoNascita("Salerno");
-		a.setNome("Antonio");
-		a.setTagliaIndumenti("xl");
+		a.setNome("Gianluca");
+		a.setTagliaIndumenti("s");
 		
 		
 		
@@ -257,14 +257,14 @@ public class BambinoManageDSTest extends TestCase{
 		
 	}
 	
-	public void testBambino9FormatoTagliaErrato() {
+	public void testBambino9TagliaNonIndicata() {
 		a.setAusilioMaterialeGalleggiante(false);
-		a.setCertificatoMedico("wau");
-		a.setCodiceFiscale("DLANTN98A13H703Y");
-		a.setCognome("Dalia");
+		a.setCertificatoMedico("cert.pdf");
+		a.setCodiceFiscale("RSSGLC10R10H703N");
+		a.setCognome("Rossi");
 		a.setDataNascita(data.getTime());
 		a.setDisabilita(false);
-		a.setDocumentoIdentita("ci sta");
+		a.setDocumentoIdentita("doc.pdf");
 		a.setEsigenzeAlimentari(false);
 		a.setFarmaci(null);
 		a.setGenere('M');
@@ -272,9 +272,8 @@ public class BambinoManageDSTest extends TestCase{
 		a.setInfoAllergie(null);
 		a.setInfoEsigenzeAlimentari(null);
 		a.setLuogoNascita("Salerno");
-		a.setNome("Antonio");
-		a.setTagliaIndumenti("bcbcbcbcbcbcb");
-		
+		a.setNome("Gianluca");
+		a.setTagliaIndumenti("");
 		
 		
 		try {
@@ -287,14 +286,14 @@ public class BambinoManageDSTest extends TestCase{
 		
 	}
 	
-	public void testBambinoUpdate1ModificaParametriObbligatori() {
+	public void testBambinoUpdate1Precompilati() {
 		a.setAusilioMaterialeGalleggiante(false);
-		a.setCertificatoMedico("wau");
-		a.setCodiceFiscale("DLANTN98A13H703Y");
-		a.setCognome("Dalia");
+		a.setCertificatoMedico("cert.pdf");
+		a.setCodiceFiscale("RSSGLC10R10H703N");
+		a.setCognome("Rossi");
 		a.setDataNascita(data.getTime());
 		a.setDisabilita(false);
-		a.setDocumentoIdentita("ci sta");
+		a.setDocumentoIdentita("doc.pdf");
 		a.setEsigenzeAlimentari(false);
 		a.setFarmaci(null);
 		a.setGenere('M');
@@ -302,13 +301,41 @@ public class BambinoManageDSTest extends TestCase{
 		a.setInfoAllergie(null);
 		a.setInfoEsigenzeAlimentari(null);
 		a.setLuogoNascita("Salerno");
-		a.setNome("Antonio");
-		a.setTagliaIndumenti("xl");
+		a.setNome("Gianluca");
+		a.setTagliaIndumenti("s");
+		
+		
+		try {
+			
+			bam.save(a);
+		}catch(IllegalArgumentException e) {
+			
+		}
+		
+	}
+	
+	public void testBambinoUpdate2ModificaParametriObbligatori() {
+		a.setAusilioMaterialeGalleggiante(false);
+		a.setCertificatoMedico("cert.pdf");
+		a.setCodiceFiscale("RSSGLC10R10H703N");
+		a.setCognome("Rossi");
+		a.setDataNascita(data.getTime());
+		a.setDisabilita(false);
+		a.setDocumentoIdentita("doc.pdf");
+		a.setEsigenzeAlimentari(false);
+		a.setFarmaci(null);
+		a.setGenere('M');
+		a.setGenitore(genitore);
+		a.setInfoAllergie(null);
+		a.setInfoEsigenzeAlimentari(null);
+		a.setLuogoNascita("Salerno");
+		a.setNome("Gianluca");
+		a.setTagliaIndumenti("s");
 		
 		bam.save(a);
 		
-		a.setCertificatoMedico("ci sta 1");
-		a.setDocumentoIdentita("ci sta 1");
+		a.setCertificatoMedico("cert1.pdf");
+		a.setDocumentoIdentita("doc1.pdf");
 		a.setTagliaIndumenti("m");
 		
 		
@@ -321,14 +348,14 @@ public class BambinoManageDSTest extends TestCase{
 		
 	}
 	
-	public void testBambinoUpdate2ModificaParametriNonObbligatori() {
+	public void testBambinoUpdate3ModificaParametriNonObbligatori() {
 		a.setAusilioMaterialeGalleggiante(false);
-		a.setCertificatoMedico("ci sta");
-		a.setCodiceFiscale("DLANTN98A13H703Y");
-		a.setCognome("Dalia");
+		a.setCertificatoMedico("cert.pdf");
+		a.setCodiceFiscale("RSSGLC10R10H703N");
+		a.setCognome("Rossi");
 		a.setDataNascita(data.getTime());
 		a.setDisabilita(false);
-		a.setDocumentoIdentita("ci sta");
+		a.setDocumentoIdentita("doc.pdf");
 		a.setEsigenzeAlimentari(false);
 		a.setFarmaci(null);
 		a.setGenere('M');
@@ -336,17 +363,46 @@ public class BambinoManageDSTest extends TestCase{
 		a.setInfoAllergie(null);
 		a.setInfoEsigenzeAlimentari(null);
 		a.setLuogoNascita("Salerno");
-		a.setNome("Antonio");
-		a.setTagliaIndumenti("xl");
+		a.setNome("Gianluca");
+		a.setTagliaIndumenti("s");
 		
 		bam.save(a);
 		
+		a.setInfoEsigenzeAlimentari("Pane e acqua");
 		a.setAusilioMaterialeGalleggiante(true);
-		a.setDisabilita(true);
 		a.setEsigenzeAlimentari(true);
-		a.setFarmaci("aspirina");
-		a.setInfoAllergie("polvere");
-		a.setInfoEsigenzeAlimentari("pane e acqua");
+		a.setTagliaIndumenti("m");
+		
+		try {
+			
+			bam.update(a);
+		}catch(IllegalArgumentException e) {
+			
+		}
+		
+	}
+	
+	public void testBambinoUpdate4ModificaParametriTagliaNonIndicata() {
+		a.setAusilioMaterialeGalleggiante(false);
+		a.setCertificatoMedico("cert.pdf");
+		a.setCodiceFiscale("RSSGLC10R10H703N");
+		a.setCognome("Rossi");
+		a.setDataNascita(data.getTime());
+		a.setDisabilita(false);
+		a.setDocumentoIdentita("doc.pdf");
+		a.setEsigenzeAlimentari(false);
+		a.setFarmaci(null);
+		a.setGenere('M');
+		a.setGenitore(genitore);
+		a.setInfoAllergie(null);
+		a.setInfoEsigenzeAlimentari(null);
+		a.setLuogoNascita("Salerno");
+		a.setNome("Gianluca");
+		a.setTagliaIndumenti("s");
+		
+		bam.save(a);
+		
+		a.setTagliaIndumenti(null);
 		
 		
 		try {
@@ -358,15 +414,14 @@ public class BambinoManageDSTest extends TestCase{
 		
 	}
 	
-	
-	public void testBambinoUpdate3FormatoTagliaErrato() {
+	public void testBambinoUpdate5FormatoFileErrato() {
 		a.setAusilioMaterialeGalleggiante(false);
-		a.setCertificatoMedico("wau");
-		a.setCodiceFiscale("DLANTN98A13H703Y");
-		a.setCognome("Dalia");
+		a.setCertificatoMedico("cert.pdf");
+		a.setCodiceFiscale("RSSGLC10R10H703N");
+		a.setCognome("Rossi");
 		a.setDataNascita(data.getTime());
 		a.setDisabilita(false);
-		a.setDocumentoIdentita("ci sta");
+		a.setDocumentoIdentita("doc.pdf");
 		a.setEsigenzeAlimentari(false);
 		a.setFarmaci(null);
 		a.setGenere('M');
@@ -374,12 +429,14 @@ public class BambinoManageDSTest extends TestCase{
 		a.setInfoAllergie(null);
 		a.setInfoEsigenzeAlimentari(null);
 		a.setLuogoNascita("Salerno");
-		a.setNome("Antonio");
-		a.setTagliaIndumenti("xl");
+		a.setNome("Gianluca");
+		a.setTagliaIndumenti("s");
 		
 		bam.save(a);
 		
-		a.setTagliaIndumenti("vvvvsvvsvvsvsvsvvsv");
+		a.setCertificatoMedico("doc.xml");
+		a.setDocumentoIdentita("cert.ppt");
+		
 		
 		try {
 			
@@ -388,42 +445,8 @@ public class BambinoManageDSTest extends TestCase{
 		}catch(IllegalArgumentException e) {
 			
 		}
-	}
-	
-	public void testBambinoUpdate4FormatoFileErrato() {
-		a.setAusilioMaterialeGalleggiante(false);
-		a.setCertificatoMedico("wau");
-		a.setCodiceFiscale("DLANTN98A13H703Y");
-		a.setCognome("Dalia");
-		a.setDataNascita(data.getTime());
-		a.setDisabilita(false);
-		a.setDocumentoIdentita("ci sta");
-		a.setEsigenzeAlimentari(false);
-		a.setFarmaci(null);
-		a.setGenere('M');
-		a.setGenitore(genitore);
-		a.setInfoAllergie(null);
-		a.setInfoEsigenzeAlimentari(null);
-		a.setLuogoNascita("Salerno");
-		a.setNome("Antonio");
-		a.setTagliaIndumenti("xl");
-		
-		bam.save(a);
-		
-		a.setCertificatoMedico("");
-		a.setDocumentoIdentita("");
-		
-		
-		try {
-			
-			bam.update(a);
-			fail("Dovrebbe esserci Illegal Argument Exception");
-		}catch(IllegalArgumentException e) {
-			
-		}
 		
 	}
-	
 	
 	
 	
