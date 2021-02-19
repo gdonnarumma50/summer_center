@@ -16,7 +16,7 @@
                     <%=exception.getMessage() %>
                 </div>
                 <div class="error-actions">
-                    <a href="/" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
+                    <a href="./" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
                         Torna al sito </a>
                 </div>
             </div>
