@@ -142,8 +142,8 @@ String error = (String) request.getAttribute("errorMessage");
 
         <div class="form-label">
           <div class="form-floating">
-          <label id="allergie" for="allergie">Allergie</label>
-          <textarea name="infoAllergie" class="form-control"  id="allergie" style="height: 100px"></textarea>
+          <label for="allergie">Allergie</label>
+          <textarea id="allergie" name="infoAllergie" class="form-control"  id="allergie" style="height: 100px"></textarea>
     	  </div>
         </div>
 

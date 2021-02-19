@@ -9,7 +9,9 @@ $(document).ready(function() {
 		
 		const dataNascita = document.getElementById("dataNascita");
 		dataNascita.value = "";
-		dataNascita.disabled === true ? dataNascita.disabled = false : dataNascita.disabled = true;
+		if(dataNascita.getAttribute("readonly")) {
+			dataNascita.removeAttribute("readonly")
+		}
 		
 		const luogoNascita = document.getElementById("luogoNascita");
 		luogoNascita.value = "";
@@ -71,9 +73,9 @@ $(document).ready(function() {
 		const materialeGalSel = $("#bambini :selected").attr("data-materialeGal");
 		
 		infoEsigenze.value = infoEsigenzeSel && infoEsigenzeSel !== 'null' ? infoEsigenzeSel : "";
-		farmaci.value = farmaciSel && infoEsigenzeSel !== 'null' ? farmaciSel : "";
+		farmaci.value = farmaciSel && farmaciSel !== 'null' ? farmaciSel : "";
 		
-		allergie.value = allergieSel && infoEsigenzeSel !== 'null' ? allergieSel : "";
+		allergie.value = allergieSel && allergieSel !== 'null' ? allergieSel : "";
 		
 		taglia.value = tagliaSel ? tagliaSel : ""; 
 		
