@@ -1,5 +1,10 @@
 <%@ page language="java" import="java.util.*" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="./assets/includes/header.jsp" %>
+<%
+if(utente != null) {
+	response.sendRedirect(request.getContextPath()+"/dashboard.jsp");
+}
+%>
 	<div class="container" style="position: relative">
 	
 	<%

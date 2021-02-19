@@ -61,8 +61,6 @@ public class LoginControl extends HttpServlet {
 			response.sendRedirect(request.getContextPath() + "/dashboard.jsp");
 		} else {
 			request.setAttribute("errorMessage", "Credenziali errate!");
-			System.out.println("ERRORE");
-			System.out.println(request.getAttribute("errorMessage"));
 			
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/");
 			dispatcher.forward(request, response);
@@ -70,6 +68,4 @@ public class LoginControl extends HttpServlet {
 		
 		
 	}
-	
-//prova commit1
 }
