@@ -25,7 +25,7 @@ String error = (String) request.getAttribute("errorMessage");
 			</div>
 		<%} %>
 
-    	<form id="form_iscrizione" class="form-register" action="#" method="post" data-toggle="validator" role="form" enctype="multipart/form-data" novalidate>
+    	<form id="form_iscrizione" class="form-register" action="iscrizione" method="post" data-toggle="validator" role="form" enctype="multipart/form-data" novalidate>
 
     	  <div class="text-center mb-4">
     	    <img class="mb-4" src="assets/images/Logo_SummerCamp.png" alt="American Delights" width="250" height="200">
