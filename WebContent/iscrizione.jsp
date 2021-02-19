@@ -35,7 +35,7 @@ String error = (String) request.getAttribute("errorMessage");
     	 <%
 		   	if(bambini!=null) {
 		   		%>
-          <div class="form-label-group">
+          <div class="form-label">
             <select id="bambini" class="form-control" aria-label="Default select example">
               <option value="" selected></option>
               <%for(Bambino b: bambini) {
@@ -96,6 +96,7 @@ String error = (String) request.getAttribute("errorMessage");
     	  </div>
 
         <div class="form-label">
+          <label for="genere">Genere</label>
           <select id="genere" name="genere" class="form-control" aria-label="Default select example" required autofocus>
             <option value="" selected>Genere</option>
             <option value="M">Maschio</option>
@@ -172,6 +173,7 @@ String error = (String) request.getAttribute("errorMessage");
         </div>
 
         <div class="form-label">
+          <label for="tagliaIndumenti">Taglia indumenti</label>
           <select id="taglia" name="tagliaIndumenti" class="form-control" aria-label="Default select example" required autofocus>
             <option selected>Taglia indumenti</option>
             <option value="XS">XS</option>
@@ -182,7 +184,8 @@ String error = (String) request.getAttribute("errorMessage");
           </select>
     	  </div>
 
-        <div class="form-label-group">
+        <div class="form-label">
+       	  <label for="tipoSoggiorno">Tipo soggiorno</label>
           <select name="tipoSoggiorno" class="form-control" aria-label="Default select example" required autofocus>
             <option value="" selected>Tipo soggiorno</option>
             <option value="Part-Time">Part-Time</option>
