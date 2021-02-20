@@ -2,11 +2,13 @@
 <persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
 	<persistence-unit name="SummerCenterPU" transaction-type="RESOURCE_LOCAL">
         <non-jta-data-source>java:/comp/env/jdbc/SummerCenterDS</non-jta-data-source>
-		<class>test.User</class>
-		<class>model.entity.Utente</class>
-		<class>model.entity.Genitore</class>
-		<class>model.entity.Settimana</class>
 		<class>model.entity.Bambino</class>
+		<class>model.entity.Genitore</class>
 		<class>model.entity.Iscrizione</class>
+		<class>model.entity.Settimana</class>
+		<class>model.entity.Utente</class>
+		<properties>
+			<property name="hibernate.id.new_generator_mappings" value="false" ></property>
+		</properties>
 	</persistence-unit>
 </persistence>
